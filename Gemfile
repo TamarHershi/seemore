@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "omniauth"
 gem "omniauth-github"
+gem "omniauth-twitter"
+gem "omniauth-vimeo"
 gem 'httparty'
 
 gem 'bootstrap-sass', '~> 3.3.5'
