@@ -1,0 +1,2 @@
+class TversController < ApplicationController
+end
