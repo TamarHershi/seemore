@@ -1,2 +1,0 @@
-class TversController < ApplicationController
-end
