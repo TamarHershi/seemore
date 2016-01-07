@@ -10,9 +10,11 @@ RSpec.describe SessionsController, type: :controller do
           get :create, provider: :twitter
           expect(subject).to redirect_to root_path
         end
-        
         it "creates a user" do
-
+          expect {get :create, provider: :twitter}.to change(User, :count).by(1)
+        end
+        it "" do
+          
         end
       end
 
