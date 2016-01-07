@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'users#show'
-  get 'users#index'
   get "/auth/:provider/callback", to: "sessions#create"
   resources :sessions, except: [:update]
   resources :creators
