@@ -12,6 +12,22 @@ RSpec.describe User, type: :model do
     it "is valid" do
       expect(twitter_user).to be_valid
     end
+
+
+    it "requires a username" do
+      twitter_user.name = nil
+      expect(twitter_user).to be_invalid
+    end
+
+    it "requires a uid" do
+      twitter_user.uid = nil
+      expect(twitter_user).to be_invalid
+    end
+
+    it "requires a provider" do
+      twitter_user.provider = nil
+      expect(twitter_user).to be_invalid
+    end
   end
 
   describe ".initialize_from_omniauth" do
@@ -28,5 +44,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
-
 end
