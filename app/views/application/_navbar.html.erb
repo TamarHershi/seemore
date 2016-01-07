@@ -1,4 +1,11 @@
-<%= form_tag(search_path :method => "get", id: "search-form") do %>
+<!-- <%= form_tag(method: "get", url: search_path, id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "curate!" %>
 <%= submit_tag "Search" %>
-<% end %>
+<% end %> -->
+
+<%= form_tag(search_path, :method => "get", id: "search-form") do %>
+    <div class="search-box">
+      <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+      <button class="btn btn-default search-button" type="submit">Search</button>
+    </div>
+  <% end %>

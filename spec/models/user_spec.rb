@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+
   let(:twitter_user) { User.new(
     email:    "a@b.com",
     username: "Ada",
@@ -13,4 +14,5 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
   end
+
 end
