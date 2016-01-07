@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: "sessions#create"
   resources :sessions, except: [:update]
   resources :creators
-  post "/search" => "searches#search", as: :search
+  get "/search" => "searches#search", as: :search
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
