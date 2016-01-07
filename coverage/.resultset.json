@@ -33,6 +33,16 @@
         1,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        0,
+        null,
         null,
         null
       ],
@@ -54,6 +64,29 @@
       ],
       "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/models/user.rb": [
         1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        2,
+        null,
+        0,
+        null,
+        null,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/models/video.rb": [
@@ -81,6 +114,6 @@
         0
       ]
     },
-    "timestamp": 1452205221
+    "timestamp": 1452207218
   }
 }
