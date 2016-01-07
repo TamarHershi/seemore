@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root 'users#show'
+  get 'users#index'
+  get "/auth/:provider/callback", to: "sessions#create"
+  resources :sessions, except: [:update]
+  resources :creators
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
