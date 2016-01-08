@@ -1,10 +1,6 @@
 {
   "RSpec": {
     "coverage": {
-      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/creators_controller.rb": [
-        1,
-        null
-      ],
       "/users/rileypants/ada/git/project_forks/seemore/app/controllers/application_controller.rb": [
         1,
         null,
@@ -15,6 +11,10 @@
         1,
         0,
         null,
+        null
+      ],
+      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/creators_controller.rb": [
+        1,
         null
       ],
       "/users/rileypants/ada/git/project_forks/seemore/app/controllers/searches_controller.rb": [
@@ -92,28 +92,8 @@
       "/users/rileypants/ada/git/project_forks/seemore/app/models/video.rb": [
         1,
         null
-      ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/helpers/application_helper.rb": [
-        0,
-        0
-      ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/helpers/creators_helper.rb": [
-        0,
-        0
-      ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/helpers/searches_helper.rb": [
-        0,
-        0
-      ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/helpers/sessions_helper.rb": [
-        0,
-        0
-      ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/helpers/users_helper.rb": [
-        0,
-        0
       ]
     },
-    "timestamp": 1452210209
+    "timestamp": 1452211460
   }
 }
