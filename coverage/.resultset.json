@@ -1,19 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-<<<<<<< HEAD
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/controllers/creators_controller.rb": [
-        1,
-        null
-      ],
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/controllers/application_controller.rb": [
-=======
-      "/Users/emilygordon/Ada/project-forks/seemore/app/controllers/creators_controller.rb": [
-        1,
-        null
-      ],
-      "/Users/emilygordon/Ada/project-forks/seemore/app/controllers/application_controller.rb": [
->>>>>>> d3a1ea05c592a3db339d5e5107e51d6c65fbe744
+      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -25,14 +13,40 @@
         null,
         null
       ],
-<<<<<<< HEAD
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/controllers/searches_controller.rb": [
+      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/creators_controller.rb": [
         1,
         null
       ],
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/controllers/sessions_controller.rb": [
-=======
-      "/Users/emilygordon/Ada/project-forks/seemore/app/controllers/searches_controller.rb": [
+      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/searches_controller.rb": [
+        1,
+        null,
+        1,
+        2,
+        2,
+        2,
+        null,
+        null,
+        null
+      ],
+      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/sessions_controller.rb": [
+        1,
+        1,
+        11,
+        11,
+        9,
+        9,
+        7,
+        7,
+        null,
+        2,
+        null,
+        null,
+        2,
+        null,
+        null,
+        null
+      ],
+      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/users_controller.rb": [
         1,
         null,
         1,
@@ -40,104 +54,46 @@
         null,
         null
       ],
-      "/Users/emilygordon/Ada/project-forks/seemore/app/controllers/sessions_controller.rb": [
->>>>>>> d3a1ea05c592a3db339d5e5107e51d6c65fbe744
+      "/users/rileypants/ada/git/project_forks/seemore/app/models/creator.rb": [
         1,
-        1,
-        0,
-        0,
-        null,
         null
       ],
-<<<<<<< HEAD
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/controllers/users_controller.rb": [
-=======
-      "/Users/emilygordon/Ada/project-forks/seemore/app/controllers/users_controller.rb": [
->>>>>>> d3a1ea05c592a3db339d5e5107e51d6c65fbe744
+      "/users/rileypants/ada/git/project_forks/seemore/app/models/tweet.rb": [
         1,
-        null,
+        null
+      ],
+      "/users/rileypants/ada/git/project_forks/seemore/app/models/user.rb": [
+        1,
         1,
         null,
         null,
+        1,
+        14,
+        14,
+        null,
+        3,
+        null,
+        null,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        8,
+        null,
+        null,
+        null,
+        null,
+        null,
         null
       ],
-<<<<<<< HEAD
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/models/creator.rb": [
+      "/users/rileypants/ada/git/project_forks/seemore/app/models/video.rb": [
         1,
         null
-      ],
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/models/tweet.rb": [
-        1,
-        null
-      ],
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/models/user.rb": [
-        1,
-        null
-      ],
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/models/video.rb": [
-        1,
-        null
-      ],
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/helpers/application_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/helpers/creators_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/helpers/searches_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/helpers/sessions_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/tamarhershenbaum/Desktop/ADA/project-forks/seemore/app/helpers/users_helper.rb": [
-=======
-      "/Users/emilygordon/Ada/project-forks/seemore/app/models/creator.rb": [
-        1,
-        null
-      ],
-      "/Users/emilygordon/Ada/project-forks/seemore/app/models/tweet.rb": [
-        1,
-        null
-      ],
-      "/Users/emilygordon/Ada/project-forks/seemore/app/models/user.rb": [
-        1,
-        null
-      ],
-      "/Users/emilygordon/Ada/project-forks/seemore/app/models/video.rb": [
-        1,
-        null
-      ],
-      "/Users/emilygordon/Ada/project-forks/seemore/app/helpers/application_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/emilygordon/Ada/project-forks/seemore/app/helpers/creators_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/emilygordon/Ada/project-forks/seemore/app/helpers/searches_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/emilygordon/Ada/project-forks/seemore/app/helpers/sessions_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/emilygordon/Ada/project-forks/seemore/app/helpers/users_helper.rb": [
->>>>>>> d3a1ea05c592a3db339d5e5107e51d6c65fbe744
-        0,
-        0
       ]
     },
-<<<<<<< HEAD
-    "timestamp": 1452197651
-=======
-    "timestamp": 1452192963
->>>>>>> d3a1ea05c592a3db339d5e5107e51d6c65fbe744
+    "timestamp": 1452211460
   }
 }
