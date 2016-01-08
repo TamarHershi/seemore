@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :require_login, except: [:new]
+  def new
+  end
   def create
    auth_hash = request.env['omniauth.auth']
    if auth_hash["uid"]
