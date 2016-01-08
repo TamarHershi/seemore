@@ -2,9 +2,14 @@
 @import "bootstrap";
 @import 'bootstrap/theme';
 
+$light-grey: #707070;
+$med-grey: #454545;
+
+
 body {
   font-family: 'Cardo', serif;
   text-align: center;
+  color: $med-grey;
 }
 
 .flash {
@@ -17,6 +22,7 @@ body {
 
 h1 {
   font-family: 'Oswald', serif;
+  color: $med-grey;
 }
 
 .navbar-default {
@@ -45,7 +51,7 @@ h1 {
 .follow-btn {
   font-family: 'Oswald', serif;
   background-color: #FFFFFF;
-  border: 1px black solid;
+  border: 1px $med-grey solid;
   margin-top: 8px;
 }
 
@@ -62,5 +68,10 @@ h1 {
 }
 
 a {
-  color: #000000;
+  color: $med-grey;
+}
+
+a:hover {
+  color: $light-grey;
+  text-decoration: none;
 }
