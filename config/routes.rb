@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :creators
   get "/search" => "searches#search", as: :search
   delete "/logout" => "sessions#destroy", as: :logout
+  get '/feed', to: "users#show", as: :feed
   
 end
