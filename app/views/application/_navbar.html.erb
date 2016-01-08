@@ -4,7 +4,7 @@
       <% if @current_user %>
         <%= link_to "Creators I Follow", creators_path %> / 
         <%= link_to "Feed", root_path %> / 
-        <%= link_to "Logout", logout_path %>
+        <%= link_to "Logout", logout_path, method: :delete %>
       <% else %>
         Welcome to CurateTV
       <% end %>
