@@ -4,19 +4,18 @@
   </h1>
 </div>
 
-<%= @results.in_groups_of(3, false) do |group| %>
+<% @results.in_groups_of(3, false) do |group| %>
   <div class="row">
-    <%= group.each do |result| %>
-      <div class="col-sm-4 col-md-4">
+    <% group.each do |result| %>
+      <div class="col-sm-4 col-md-4 creator-col">
         <% if !result["pictures"].nil? %>
           <% picture = result["pictures"]["sizes"][2]["link"] %>
-          <%= image_tag(picture) %>
+          <%= image_tag(picture, class: "creator-image") %>
         <% end %>
-          <br>
-          name : <%= result["name"] %>
-          <br>
-<!--           bio:  <%= result["bio"] if !result["bio"].nil?%> -->
-          <br>
+        <h4 class="creator-name">
+          <%= result["name"] %>
+        </h4>
+        <%= button_to "Follow", root_path, class: "btn btn-default follow-btn" %>
       </div>
   <% end %>
   </div>
