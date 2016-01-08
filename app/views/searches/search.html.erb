@@ -15,7 +15,7 @@
           <h4 class="creator-name">
             <%= result["name"] %>
           </h4>
-          <%= button_to "Follow", root_path, class: "btn btn-default follow-btn" %>
+          <%= button_to "Follow", {:controller => "creators", :name => result["name"], :user_id=> session[:user_id], :provider=> @provider} ,class: "btn btn-default follow-btn" %>
         </div>
     <% end %>
     </div>
