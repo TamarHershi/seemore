@@ -11,6 +11,7 @@ class SearchesController < ApplicationController
        flash.now[:error] = "No results matched your search."
      else
        @results = results["data"]
+       @provider = "twitter"
      end
   end
 
