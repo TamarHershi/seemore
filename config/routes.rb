@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :sessions, except: [:update]
   resources :creators
   get "/search" => "searches#search", as: :search
-
+  delete "/logout" => "sessions#destroy", as: :logout
   
 end

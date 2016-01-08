@@ -1,8 +1,21 @@
-<%= form_tag(search_path, :method => "get", id: "search-form") do %>
-    <div class="search-box">
-      <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-      <button class="btn btn-default search-button" type="submit">Search</button>
+<div class="row">
+  <div class="navbar navbar-default">
+    <div class="navbar-left navbar-links">
+      <% if @current_user %>
+        <%= link_to "Creators I Follow", creators_path %> / 
+        <%= link_to "Feed", root_path %> / 
+        <%= link_to "Logout", logout_path %>
+      <% else %>
+        Welcome to CurateTV
+      <% end %>
     </div>
-  <% end %>
-<%= link_to "Creators I Follow", creators_path %>
-<%= link_to "Feed", root_path %>
+    <div class="navbar-right">
+      <%= form_tag(search_path, :method => "get", id: "search-form") do %>
+          <div class="search-box">
+            <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+            <button class="btn btn-default search-button" type="submit">Search</button>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

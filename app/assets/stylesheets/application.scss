@@ -1,0 +1,47 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'bootstrap/theme';
+
+body {
+  font-family: 'Cardo', serif;
+  text-align: center;
+}
+
+.flash {
+  font-family: 'Cardo', serif;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-family: 'Oswald', serif;
+}
+
+.navbar-default {
+  background-color: #76CCAF;
+  margin-top: 7px;
+}
+
+.navbar-right {
+  margin-right: 30px;
+  margin-top: 7px;
+}
+
+.navbar-left {
+  margin-left: 20px;
+  margin-top: 12px;
+}
+
+.navbar-links {
+  font-size: 18px;
+}
+
+.search-button {
+ margin-left: 4px;
+}
+
+a {
+  color: #000000;
+}

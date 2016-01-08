@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
   def require_login
     unless current_user
-      flash[:error] = "Please log in!"
+      flash[:error] = "Login to begin curating."
       redirect_to new_session_path
     end
   end
