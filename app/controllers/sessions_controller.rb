@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :require_login, except: [:new, :create]
+  skip_before_filter :verify_authenticity_token, only: [:create]
 
   def new
   end
