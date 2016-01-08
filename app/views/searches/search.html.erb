@@ -1,4 +1,15 @@
 <h1>Search Results</h1>
 <p>
-  <%= @results %>
+  <%= @results.each do |result| %>
+  <% if !result["pictures"].nil? %>
+    <% picture = result["pictures"]["sizes"][2]["link"] %>
+    <%= image_tag(picture) %>
+  <% end %>
+    <br>
+    name : <%= result["name"] %>
+    <br>
+    bio:  <%= result["bio"] if !result["bio"].nil?%>
+    <br>
+
+  <% end %>
 </p>
