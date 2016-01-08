@@ -4,5 +4,6 @@ class CreatorsController < ApplicationController
       @creators = @current_user.creators
     else
       flash.now[:notice] = "Try following some people first!"
+    end
   end
 end
