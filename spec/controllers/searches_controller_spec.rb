@@ -34,8 +34,10 @@ RSpec.describe SearchesController, type: :controller do
         expect(response.status).to eq 200
       end
       it "returns a search result" do
+        get :search, good_search_params
         expect(assigns(:results)).to be_an_instance_of(Array)
-        expect(assigns(:results).length).not_to be_empty
+        expect(assigns(:results)).not_to be_empty
+        expect(assigns(:results)[1]["name"]).to include("cat")
       end
       it "flash error if no search results" do
         get :search, bad_search_params

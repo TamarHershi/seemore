@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-01-08T10:07:31-08:00">2016-01-08T10:07:31-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-01-08T12:14:09-08:00">2016-01-08T12:14:09-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.98
+         5.12
        </span>
     </span> hits/line)
   </h2>
@@ -57,7 +57,7 @@
         <td>11</td>
         <td>9</td>
         <td>2</td>
-        <td>2.5</td>
+        <td>2.7</td>
       </tr>
       
       <tr>
@@ -77,7 +77,7 @@
         <td>9</td>
         <td>9</td>
         <td>0</td>
-        <td>2.0</td>
+        <td>2.6</td>
       </tr>
       
       <tr>
@@ -153,7 +153,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.93
+         3.13
        </span>
     </span> hits/line)
   </h2>
@@ -185,7 +185,7 @@
         <td>11</td>
         <td>9</td>
         <td>2</td>
-        <td>2.5</td>
+        <td>2.7</td>
       </tr>
       
       <tr>
@@ -205,7 +205,7 @@
         <td>9</td>
         <td>9</td>
         <td>0</td>
-        <td>2.0</td>
+        <td>2.6</td>
       </tr>
       
       <tr>
@@ -499,8 +499,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="10">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="19" data-linenumber="10">
+          <span class="hits">19</span>
           
           <code class="ruby">   @current_user ||= User.find(session[:user_id]) if session[:user_id]</code>
         </li>
@@ -517,8 +517,8 @@
           <code class="ruby">  def require_login</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="13">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="13">
+          <span class="hits">4</span>
           
           <code class="ruby">    unless current_user</code>
         </li>
@@ -631,20 +631,20 @@
           <code class="ruby">  def search</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="6">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="6">
+          <span class="hits">4</span>
           
           <code class="ruby">    search_term = params[:search]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="7">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="7">
+          <span class="hits">4</span>
           
           <code class="ruby">    vimeo_access_token = ENV[&quot;VIMEO_ACCESS_TOKEN&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="8">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="8">
+          <span class="hits">4</span>
           
           <code class="ruby">    results = HTTParty.get(&quot;https://api.vimeo.com/users?page=1&amp;per_page=25&amp;query=#{search_term}&amp;fields=name,bio,pictures&quot;,</code>
         </li>
@@ -655,8 +655,8 @@
           <code class="ruby">     headers: {&quot;Authorization&quot; =&gt; &quot;bearer #{vimeo_access_token}&quot;, &#39;Accept&#39; =&gt; &#39;application/json&#39; }, format: :json).parsed_response</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="10">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="10">
+          <span class="hits">4</span>
           
           <code class="ruby">     if results[&quot;total&quot;] == 0</code>
         </li>
@@ -673,8 +673,8 @@
           <code class="ruby">     else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="13">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="13">
+          <span class="hits">3</span>
           
           <code class="ruby">       @results = results[&quot;data&quot;]</code>
         </li>
