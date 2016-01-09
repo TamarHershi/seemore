@@ -45,8 +45,32 @@ h1 {
   font-size: 18px;
 }
 
+#navbar-text-right {
+  font-size: 18px;
+  margin-top: 5px;
+  color: $light-grey;
+}
+
+#navbar-text-left {
+  font-size: 18px;
+  color: $light-grey;
+}
+
 .search-button {
  margin-left: 4px;
+}
+
+.login-links {
+  font-size: 125px;
+}
+
+.login-link-right {
+  margin-left: 15px;
+}
+
+.login-link-left {
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .follow-btn {

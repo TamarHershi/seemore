@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :categories
+  has_many :creators, through: :categories
   validates :name, :uid, :provider,
    presence: true
 
