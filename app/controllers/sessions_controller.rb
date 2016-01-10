@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :require_login, except: [:new, :create]
+  skip_before_filter :verify_authenticity_token, only: [:create]
 
   def new
   end
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
      @user = User.find_or_create_from_omniauth(auth_hash)
      if @user
        session[:user_id] = @user.id
-       redirect_to root_path, notice: "Welcome to CurateTV. Happy Curating!"
+       redirect_to feed_path, notice: "Welcome to CurateTV. Happy Curating!"
      else
        redirect_to root_path, notice: "Failed to save the user."
      end

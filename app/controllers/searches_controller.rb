@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
   def search
     search_term = params[:search]
     vimeo_access_token = ENV["VIMEO_ACCESS_TOKEN"]
+<<<<<<< HEAD
     twitter_bearer_token = Twitter::REST::Client.new do |config|
       config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
       config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
@@ -27,6 +28,16 @@ class SearchesController < ApplicationController
     #  else
     #    @results = results["data"]
     #  end
+=======
+    results = HTTParty.get("https://api.vimeo.com/users?page=1&per_page=25&query=#{search_term}&fields=name,bio,pictures",
+     headers: {"Authorization" => "bearer #{vimeo_access_token}", 'Accept' => 'application/json' }, format: :json).parsed_response
+     if results["total"] == 0
+       flash.now[:error] = "No results matched your search."
+     else
+       @results = results["data"]
+       @provider = "twitter"
+     end
+>>>>>>> 820eb8b684226b66c5b73e6c34e30385ff1eca1c
   end
 
 
