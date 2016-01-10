@@ -16,7 +16,7 @@ class CreatorsController < ApplicationController
       flash[:notice] = "You're now following #{@creator.name}."
     else
       @creator = Creator.new(
-        provider_id: params["uri"],
+        uri: params["uri"],
         name: params["name"],
         provider: params["provider"],
         profile_pic: params["profile_pic"]["sizes"][2]["link"],
