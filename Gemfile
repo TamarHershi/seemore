@@ -29,6 +29,7 @@ gem "omniauth-twitter"
 gem "omniauth-vimeo"
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'httparty'
+gem 'twitter'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 

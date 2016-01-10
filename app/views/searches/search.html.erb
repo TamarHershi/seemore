@@ -9,14 +9,21 @@
     <div class="row">
       <% group.each do |result| %>
         <div class="col-sm-4 col-md-4 creator-col">
-          <% if !result["pictures"].nil? %>
-            <% picture = result["pictures"]["sizes"][2]["link"] %>
-            <%= image_tag(picture, class: "creator-image") %>
+          <% if @provider == "twitter" %>
+            <% picture = result.profile_image_uri if result.profile_image_uri? %>
+          <% elsif @provider == "vimeo" %>
+            <% picture = result["pictures"]["sizes"][2]["link"] if !result["pictures"].nil? %>
           <% end %>
+          <%= image_tag(picture, class: "creator-image") %>
           <h4 class="creator-name">
-            <%= result["name"] %>
+            <%= result.name if @provider == "twitter" %>
+            <%= result["name"] if @provider == "vimeo" %>
           </h4>
-          <%= button_to "Follow", {:controller => "creators", :name => result["name"], :profile_pic=> result["pictures"], :bio=> result["bio"], :provider=> @provider} ,class: "btn btn-default follow-btn" %>
+          <% if @provider == "twitter" %>
+            <%= button_to "Follow", {:controller => "creators", :name => result.name, :provider=> @provider} ,class: "btn btn-default follow-btn" %>
+          <% elsif @provider == "vimeo" %>
+            <%= button_to "Follow", {:controller => "creators", :name => result["name"], :profile_pic=> result["pictures"], :bio=> result["bio"], :provider=> @provider} ,class: "btn btn-default follow-btn" %>
+          <% end %>
         </div>
     <% end %>
     </div>
