@@ -13,10 +13,10 @@
     </div>
     <div class="navbar-right">
       <% if @current_user %>
-      <%= form_tag(search_path, :method => "get", id: "search-form" do %>
+      <%= form_tag(search_path, :method => "get", id: "search-form") do %>
           <div class="search-box">
             <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-            <button class="btn btn-default search-button" type="submit">Search </button>
+            <button class="btn btn-default search-button" type="submit" >Search </button>
             <i class="fa fa-twitter"></i>
             <i class="fa fa-vimeo"></i>
           </div>
