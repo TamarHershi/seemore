@@ -17,7 +17,7 @@ class CreatorsController < ApplicationController
       @creator = Creator.new(
         name: params["name"],
         provider: params["provider"],
-        profile_pic: params["profile_pic"],
+        profile_pic: params["profile_pic"]["sizes"][2]["link"],
         description: params["bio"],
       )
       @creator.save
