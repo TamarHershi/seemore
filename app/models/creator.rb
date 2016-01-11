@@ -10,12 +10,14 @@ class Creator < ActiveRecord::Base
       headers: {"Authorization" => "bearer #{vimeo_access_token}", 'Accept' => 'application/json' }, format: :json).parsed_response
     if videos["data"].length > 0
       videos["data"].each do |video_json|
+        video_id = video_json["uri"].gsub(/[^0-9]/, "")
         vid = Video.new ({
         uri: "#{video_json["uri"]}",
         name: "#{video_json["name"]}",
         description: "#{video_json["description"]}",
         embed: "#{video_json["embed"]["html"]}",
-        posted_at: "#{video_json["created_time"]}"
+        posted_at: "#{video_json["created_time"]}", 
+        vimeo_id: "#{video_id}"
       })
         vid.creator_id = self.id
         vid.save

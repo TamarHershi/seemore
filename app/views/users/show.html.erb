@@ -2,7 +2,10 @@
   <div class="col-md-12">
     Put feed here. <br>
     <% @videos.each do |video| %>
+    <div class="embedded-video">
+      https://vimeo.com/api/oembed.json?url=https%3A/
       <%= raw video %>
+    </div>
     <% end %>
   </div>
 </div>
