@@ -58,6 +58,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'simplecov'
   gem 'pry'
+  gem 'factory_girl_rails'
 end
 
 group :development do
