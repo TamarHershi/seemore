@@ -25,16 +25,16 @@ class User < ActiveRecord::Base
    end
  end
 
- def videos
+ def embed_videos
   videos = []
    self.creators.each do |creator|
     if creator.provider == "vimeo"
       creator.videos.each do |video|
-        binding.pry
-        videos << video
+        videos << video.embed
       end
     end
    end
+   return videos
  end
 
 end
