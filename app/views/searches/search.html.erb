@@ -24,7 +24,7 @@ require 'pry'
           <% if @provider == "twitter" %>
             <%= button_to "Follow", {:controller => "creators", :name => result.name, :provider=> @provider} ,class: "btn btn-default follow-btn" %>
           <% elsif @provider == "vimeo" %>
-            <%= button_to "Follow", {:controller => "creators", :uri => result["uri"], :name => result["name"], :profile_pic => result["picture"], :bio=> result["bio"], :provider=> @provider} ,class: "btn btn-default follow-btn" %>
+            <%= button_to "Follow", {:controller => "creators", :uri => result["uri"], :name => result["name"], :profile_pic => result["pictures"], :bio=> result["bio"], :provider=> @provider} ,class: "btn btn-default follow-btn" %>
         </div>
          <% end %>
     <% end %>
