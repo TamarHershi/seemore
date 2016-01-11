@@ -12,8 +12,12 @@ class CreatorsController < ApplicationController
     # find or create a Creator
     @creator = Creator.find_by(name: params["name"])
     if !@creator.nil?
-      @creator.users << @current_user
-      flash[:notice] = "You're now following #{@creator.name}."
+      if !@current_user.creators.include?(@creator)
+        @creator.users << @current_user
+        flash[:notice] = "You're now following #{@creator.name}."
+      elsif @current_user.creators.include(@creator)
+        flash[:notice] = "You're already following #{@creator.name}"
+      end
     else
       @creator = Creator.new(
         uri: params["uri"],
