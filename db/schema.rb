@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111004103) do
+ActiveRecord::Schema.define(version: 20160111224058) do
 
   create_table "categories", force: :cascade do |t|
     t.integer  "user_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160111004103) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "uri"
+    t.string   "uid"
   end
 
   create_table "tweets", force: :cascade do |t|
