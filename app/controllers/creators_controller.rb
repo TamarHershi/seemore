@@ -29,7 +29,6 @@ class CreatorsController < ApplicationController
         name: params["name"],
         provider: params["provider"],
         profile_pic: pic,
-        description: params["bio"],
       )
       @creator.save
       @creator.users << @current_user
