@@ -24,15 +24,17 @@ class CreatorsController < ApplicationController
       else
         pic = "twitter_default_image.png"
       end
-      @creator = Creator.new(
-        uri: params["uri"],
-        name: params["name"],
-        provider: params["provider"],
-        profile_pic: pic,
-      )
-      @creator.save
-      @creator.users << @current_user
-      @creator.add_videos
+      Creator.transaction do
+        @creator = Creator.new(
+          uri: params["uri"],
+          name: params["name"],
+          provider: params["provider"],
+          profile_pic: pic,
+        )
+        @creator.save
+        @creator.users << @current_user
+        @creator.add_videos
+      end
       flash[:notice] = "You're now following #{@creator.name}."
     end
     redirect_to :back
