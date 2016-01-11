@@ -10,7 +10,7 @@ class CreatorsController < ApplicationController
 
   def create
     # find or create a Creator
-    @creator = Creator.find_by(name: params["uri"])
+    @creator = Creator.find_by(name: params["uri"]) #use id and provider
     if !@creator.nil?
       if !@current_user.creators.include?(@creator)
         @creator.users << @current_user
@@ -23,9 +23,13 @@ class CreatorsController < ApplicationController
         uri: params["uri"],
         name: params["name"],
         provider: params["provider"],
-        profile_pic: params["profile_pic"]["sizes"][2]["link"],
         description: params["bio"],
       )
+        if @creator.provider == "vimeo"
+          @creator.profile_pic = params["profile_pic"]["sizes"][2]["link"]
+        else
+          @creator.profile_pic = params["profile_pic"]
+        end
       @creator.save
       @creator.users << @current_user
       @creator.add_videos
