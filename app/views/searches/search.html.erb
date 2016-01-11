@@ -1,5 +1,4 @@
 <div class="row">
-  <%= link_to "All your Creators", creators_path %>
   <h1>
     Search Results
   </h1>
@@ -18,7 +17,7 @@
           <h4 class="creator-name">
             <%= result["name"] %>
           </h4>
-          <%= button_to "Follow", {:controller => "creators", :name => result["name"], :profile_pic=> result["pictures"], :bio=> result["bio"], :provider=> @provider} ,class: "btn btn-default follow-btn" %>
+          <%= button_to "Follow", {:controller => "creators", :uri => result["uri"], :name => result["name"], :profile_pic=> result["pictures"], :bio=> result["bio"], :provider=> @provider} ,class: "btn btn-default follow-btn" %>
         </div>
     <% end %>
     </div>
