@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/application_controller.rb": [
+      "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -23,7 +23,7 @@
         null,
         null
       ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/creators_controller.rb": [
+      "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/controllers/creators_controller.rb": [
         1,
         null,
         1,
@@ -41,26 +41,30 @@
         0,
         0,
         0,
-        null,
-        0,
-        null,
-        null,
-        0,
-        0,
-        null,
-        0,
-        null,
         0,
         0,
         null,
         null,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
         null,
         null,
         null,
         0,
         0,
+        null,
         0,
         null,
+        0,
+        0,
+        0,
         0,
         null,
         0,
@@ -68,7 +72,7 @@
         null,
         null
       ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/searches_controller.rb": [
+      "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/controllers/searches_controller.rb": [
         1,
         1,
         null,
@@ -102,7 +106,7 @@
         null,
         null
       ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/sessions_controller.rb": [
+      "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/controllers/sessions_controller.rb": [
         1,
         1,
         1,
@@ -131,7 +135,7 @@
         null,
         null
       ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/controllers/users_controller.rb": [
+      "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/controllers/users_controller.rb": [
         1,
         null,
         1,
@@ -140,13 +144,13 @@
         null,
         null
       ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/models/category.rb": [
+      "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/models/category.rb": [
         1,
         1,
         1,
         null
       ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/models/creator.rb": [
+      "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/models/creator.rb": [
         1,
         1,
         1,
@@ -180,61 +184,61 @@
         null,
         null
       ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/models/tweet.rb": [
+      "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/models/tweet.rb": [
         1,
         null
       ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/models/user.rb": [
+      "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/models/video.rb": [
         1,
         1,
         1,
-        1,
-        null,
-        null,
-        1,
-        18,
-        18,
-        null,
-        3,
-        null,
-        null,
-        15,
-        15,
-        15,
-        15,
-        15,
-        15,
-        15,
-        12,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        null,
-        0,
         null,
         null,
         null
       ],
-      "/users/rileypants/ada/git/project_forks/seemore/app/models/video.rb": [
-        1,
-        1,
-        1,
-        null,
-        null,
-        null
+      "/Users/Sarah/Ada/Ada-projects/project-forks/seemore/app/models/user.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
       ]
     },
-    "timestamp": 1452552126
+    "timestamp": 1452556197
   }
 }

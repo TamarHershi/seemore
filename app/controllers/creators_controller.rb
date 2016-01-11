@@ -30,7 +30,7 @@ class CreatorsController < ApplicationController
             name: params["name"],
             provider: params["provider"],
             profile_pic: pic,
-            uid: params["uid"]
+            uid: params["uid"])
           if @creator.provider == "vimeo"
             @creator.profile_pic = params["profile_pic"]["sizes"][2]["link"]
           else
