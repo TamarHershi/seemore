@@ -10,7 +10,7 @@ class CreatorsController < ApplicationController
 
   def create
     # find or create a Creator
-    @creator = Creator.find_by(name: params["name"])
+    @creator = Creator.find_by(name: params["uri"])
     if !@creator.nil?
       if !@current_user.creators.include?(@creator)
         @creator.users << @current_user
