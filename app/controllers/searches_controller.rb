@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
 
   def search
     if params[:prodiver].nil?
-      flash.now[:notice] = "Please select where you want to search."
+      flash.now[:notice] = "Please select whether you want to search Twitter or Vimeo."
       render :search
     else
       if params[:provider] == "vimeo"
