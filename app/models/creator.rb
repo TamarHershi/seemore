@@ -15,7 +15,7 @@ class Creator < ActiveRecord::Base
         uri: "#{video_json["uri"]}",
         name: "#{video_json["name"]}",
         description: "#{video_json["description"]}",
-        embed: "#{video_json["embed"]["html"]}",
+        embed: "https:\/\/player.vimeo.com\/video\/#{video_id}",
         posted_at: "#{video_json["created_time"]}", 
         vimeo_id: "#{video_id}"
       })

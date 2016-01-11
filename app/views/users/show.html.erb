@@ -1,11 +1,8 @@
 <div class="row">
-  <div class="col-md-12">
-    Put feed here. <br>
-    <% @videos.each do |video| %>
-    <div class="embedded-video">
-      https://vimeo.com/api/oembed.json?url=https%3A/
-      <%= raw video %>
+  <% @videos.each do |video| %>
+  <div class="col-md-12 embedded-video">
+      <h3><%= video.name %></h3>
+      <iframe src= <%= video.embed %> width="500" height = "300"frameborder="0" title= <%= video.name %> " webkitallowfullscreen mozallowfullscreen allowfullscreen"></iframe>
     </div>
     <% end %>
-  </div>
 </div>
