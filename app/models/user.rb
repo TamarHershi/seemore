@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
    self.creators.each do |creator|
     if creator.provider == "vimeo"
       creator.videos.each do |video|
+        binding.pry
         videos << video
       end
     end
