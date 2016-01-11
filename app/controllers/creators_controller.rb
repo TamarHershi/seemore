@@ -15,15 +15,20 @@ class CreatorsController < ApplicationController
       if !@current_user.creators.include?(@creator)
         @creator.users << @current_user
         flash[:notice] = "You're now following #{@creator.name}."
-      elsif @current_user.creators.include(@creator)
+      elsif @current_user.creators.include?(@creator)
         flash[:notice] = "You're already following #{@creator.name}"
       end
     else
+      if !params["profile_pic"].nil?
+        pic = params["profile_pic"]["sizes"][2]["link"]
+      else
+        pic = "twitter_default_image.png"
+      end
       @creator = Creator.new(
         uri: params["uri"],
         name: params["name"],
         provider: params["provider"],
-        profile_pic: params["profile_pic"]["sizes"][2]["link"],
+        profile_pic: pic,
         description: params["bio"],
       )
       @creator.save

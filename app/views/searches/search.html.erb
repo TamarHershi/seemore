@@ -11,7 +11,7 @@ require 'pry'
         <div class="col-sm-4 col-md-4 creator-col">
           <% if @provider == "twitter" %>
             <% picture = result.profile_image_uri if !result.profile_image_uri.nil? %>
-            <% picture = image_tag("vimeo_default_image.png", size: "80x80", alt: "Vimeo Default Image") if result.profile_image_uri.nil? %>
+            <% picture = image_tag("twitter_default_image.png", size: "80x80", alt: "Vimeo Default Image") if result.profile_image_uri.nil? %>
           <% elsif @provider == "vimeo" %>
             <% picture = result["pictures"]["sizes"][2]["link"] if !result["pictures"].nil? %>
             <% picture = image_tag("vimeo_default_image.png", size: "80x80", alt: "Vimeo Default Image") if result["pictures"].nil? %>
