@@ -10,7 +10,7 @@ class CreatorsController < ApplicationController
 
   def create
     # find or create a Creator
-    @creator = Creator.find_by(name: params["uri"])
+    @creator = Creator.find_by(uri: params["uri"])
     if !@creator.nil?
       if !@current_user.creators.include?(@creator)
         @creator.users << @current_user
@@ -24,16 +24,17 @@ class CreatorsController < ApplicationController
       else
         pic = "twitter_default_image.png"
       end
-      @creator = Creator.new(
-        uri: params["uri"],
-        name: params["name"],
-        provider: params["provider"],
-        profile_pic: pic,
-        description: params["bio"],
-      )
-      @creator.save
-      @creator.users << @current_user
-      @creator.add_videos
+      Creator.transaction do
+        @creator = Creator.new(
+          uri: params["uri"],
+          name: params["name"],
+          provider: params["provider"],
+          profile_pic: pic,
+        )
+        @creator.save
+        @creator.users << @current_user
+        @creator.add_videos
+      end
       flash[:notice] = "You're now following #{@creator.name}."
     end
     redirect_to :back
