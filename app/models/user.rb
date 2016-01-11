@@ -24,4 +24,17 @@ class User < ActiveRecord::Base
      end
    end
  end
+
+ def videos
+  videos = []
+   self.creators.each do |creator|
+    if creator.provider == "vimeo"
+      creator.videos.each do |video|
+        videos << video
+      end
+    end
+   end
+   return videos
+ end
+
 end
