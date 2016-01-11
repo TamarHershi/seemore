@@ -11,17 +11,21 @@ class CreatorsController < ApplicationController
   def create
     # find or create a Creator
     @creator = Creator.find_by(name: params["name"])
-    if @creator
+    if !@creator.nil?
       @creator.users << @current_user
+      flash[:notice] = "You're now following #{@creator.name}."
     else
       @creator = Creator.new(
+        uri: params["uri"],
         name: params["name"],
         provider: params["provider"],
-        profile_pic: params["profile_pic"],
+        profile_pic: params["profile_pic"]["sizes"][2]["link"],
         description: params["bio"],
       )
       @creator.save
       @creator.users << @current_user
+      @creator.add_videos
+      flash[:notice] = "You're now following #{@creator.name}."
     end
     redirect_to :back
   end

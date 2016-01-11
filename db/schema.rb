@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108202915) do
+ActiveRecord::Schema.define(version: 20160111004103) do
 
   create_table "categories", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160108202915) do
     t.string   "provider"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "uri"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -55,8 +56,13 @@ ActiveRecord::Schema.define(version: 20160108202915) do
     t.integer  "creator_id"
     t.string   "posted_at"
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "uri"
+    t.string   "name"
+    t.string   "embed"
+    t.string   "description"
+    t.string   "vimeo_id"
   end
 
 end
