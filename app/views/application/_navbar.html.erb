@@ -2,8 +2,8 @@
   <div class="navbar navbar-default">
     <div class="navbar-left navbar-links">
       <% if @current_user %>
-        <%= link_to "Creators I Follow", creators_path %> / 
-        <%= link_to "Feed", root_path %> / 
+        <%= link_to "Creators I Follow", creators_path %> /
+        <%= link_to "Feed", root_path %> /
         <%= link_to "Logout", logout_path, method: :delete %>
       <% else %>
       <div id="navbar-text-left">

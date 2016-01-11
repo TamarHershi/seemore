@@ -11,6 +11,8 @@
           <% if !result["pictures"].nil? %>
             <% picture = result["pictures"]["sizes"][2]["link"] %>
             <%= image_tag(picture, class: "creator-image") %>
+          <% else %>
+            <%= image_tag("vimeo_default_image.png", size: "80x80", alt: "Vimeo Default Image") %>
           <% end %>
           <h4 class="creator-name">
             <%= result["name"] %>
