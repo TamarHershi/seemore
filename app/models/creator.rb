@@ -22,6 +22,8 @@ class Creator < ActiveRecord::Base
         vid.creator_id = self.id
         vid.save
       end
+    else
+      return nil
     end
   end
 

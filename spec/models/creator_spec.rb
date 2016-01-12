@@ -5,7 +5,13 @@ RSpec.describe Creator, type: :model do
     
   end
   describe "add_videos"  do
-    
+    it "creates new Video instances for each video associated with a creator" do
+      
+    end
+    it "returns nil if creator has no media" do
+      
+    end
+    it ""
   end
   describe "add_tweets" do
     

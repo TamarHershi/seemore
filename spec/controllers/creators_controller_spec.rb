@@ -25,6 +25,9 @@ RSpec.describe CreatorsController, type: :controller do
     it "does not allow you to follow a Creator you're already following" do
       
     end
+    it "does not save new instance of Creator unless media is saved as well" do
+      
+    end
     it "sets up the Categories relationship between @current_user and @creator" do
       
     end
