@@ -48,7 +48,7 @@ FactoryGirl.define do
   # category factories
   factory :category do
     association :creator
-    association :twitter_user
+    association :user, factory: :twitter_user
   end
 
 end

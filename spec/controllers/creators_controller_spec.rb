@@ -1,12 +1,13 @@
 require 'rails_helper'
 require 'spec_helper'
+require 'pry'
 
 RSpec.describe CreatorsController, type: :controller do
 
 context "when logged in with twitter" do
 
-  before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]}
-  let!(:user) {User.find_or_create_from_omniauth(OmniAuth.config.mock_auth[:twitter])}
+  let(:user) { create(:twitter_user) }
+  let(:category) { create(:category)}
 
   before :each do
     session[:user_id] = user.id
@@ -15,6 +16,7 @@ context "when logged in with twitter" do
   describe "GET #index" do
       context "is successful" do
         it "redirects to creator index page" do
+          binding.pry
           get :index
           expect(response).to render_template :index
         end
