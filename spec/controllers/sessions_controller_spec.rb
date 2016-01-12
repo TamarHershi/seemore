@@ -6,9 +6,9 @@ RSpec.describe SessionsController, type: :controller do
     context "logs in with Twitter" do
       context "when it is successful" do
         before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]}
-        it "redirects to root path" do
+        it "redirects to feed path" do
           get :create, provider: :twitter
-          expect(subject).to redirect_to root_path
+          expect(subject).to redirect_to feed_path
         end
         it "creates a user" do
           expect {get :create, provider: :twitter}.to change(User, :count).by(1)
