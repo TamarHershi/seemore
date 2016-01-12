@@ -1,4 +1,6 @@
 class Creator < ActiveRecord::Base
+  validates :name, uniqueness: true
+  validates :uid, uniqueness: true
   has_many :categories
   has_many :users, through: :categories
   has_many :videos
@@ -16,7 +18,7 @@ class Creator < ActiveRecord::Base
         name: "#{video_json["name"]}",
         description: "#{video_json["description"]}",
         embed: "https:\/\/player.vimeo.com\/video\/#{video_id}",
-        posted_at: "#{video_json["created_time"]}", 
+        posted_at: "#{video_json["created_time"]}",
         vimeo_id: "#{video_id}"
       })
         vid.creator_id = self.id
@@ -26,7 +28,7 @@ class Creator < ActiveRecord::Base
   end
 
   def add_tweets
-    
+
   end
 
 end
