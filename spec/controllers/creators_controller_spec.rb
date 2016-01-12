@@ -3,24 +3,33 @@ require 'spec_helper'
 
 RSpec.describe CreatorsController, type: :controller do
 
+context "when logged in with twitter" do
+
+  before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]}
+  let!(:user) {User.find_or_create_from_omniauth(OmniAuth.config.mock_auth[:twitter])}
+
+  before :each do
+    session[:user_id] = user.id
+  end
+
   describe "GET #index" do
-    context "when using Twitter authorization" do
       context "is successful" do
-        before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter] }
-        let!(:twitter_user) { User.find_or_create_from_omniauth(OmniAuth.config.mock_auth[:twitter]) }
-
-        before :each do
-          session[:user_id] = twitter_user.id
-        end
-
-        it "redirects to home page" do
+        it "redirects to creator index page" do
           get :index
           expect(response).to render_template :index
         end
 
-        # it "shows creators that the user is following" do
-        #   get :index
-        # end
+        it "is successful" do
+          get :index
+          expect(response.status).to eq 200
+        end
+
+        it "shows creators that the user is following" do
+          get :index
+          # expect(assigns(:creators)).to be_an_instance_of(Array)
+          # expect(assigns(:creators)).not_to be_empty
+          expect(assigns(:creators)[0]).to be_an_instance_of(Creator)
+        end
       end
     end
   end
@@ -47,4 +56,5 @@ RSpec.describe CreatorsController, type: :controller do
   describe "add_tweets" do
 
   end
+
 end
