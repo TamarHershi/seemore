@@ -1,15 +1,37 @@
 require 'rails_helper'
 
 RSpec.describe SearchesController, type: :controller do
+
+  before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]}
+  let!(:user) {User.find_or_create_from_omniauth(OmniAuth.config.mock_auth[:twitter])}
+
+  before :each do
+    session[:user_id] = user.id
+  end
+
   describe "GET #search" do
-    context "when searching vimeo" do
 
-      before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]}
-      let!(:user) {User.find_or_create_from_omniauth(OmniAuth.config.mock_auth[:twitter])}
+    context "when user does not specify twitter or vimeo" do
+      let (:search_params) do
+    {
+      search: "cat",
+    }
+    end
 
-      before :each do
-        session[:user_id] = user.id
+      it "renders the search template" do
+        get :search, search_params
+        expect(subject).to render_template(:search)
       end
+
+      it "flash notice if no provider is specified" do
+        get :search, search_params
+        expect(flash[:notice]).to be_present
+      end
+
+
+    end
+
+    context "when searching vimeo" do
 
       let (:good_search_params) do
     {
@@ -47,13 +69,6 @@ RSpec.describe SearchesController, type: :controller do
     end
 
     context "when searching twitter" do
-
-      before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]}
-      let!(:user) {User.find_or_create_from_omniauth(OmniAuth.config.mock_auth[:twitter])}
-
-      before :each do
-        session[:user_id] = user.id
-      end
 
       let (:good_search_params) do
     {
