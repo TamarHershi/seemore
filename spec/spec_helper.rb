@@ -26,7 +26,7 @@ end
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  
+
   config.include FactoryGirl::Syntax::Methods
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -64,7 +64,20 @@ RSpec.configure do |config|
     # set per-provider (or default) authentication
     # hashes to return during testing.
 
-    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({:provider => 'twitter', :uid => '123545', info: {email: "a@b.com", name: "Ada"}})
+    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({:provider => 'twitter', :uid => '1ab3da5',
+                                                                  info: {email: "test@test.com",
+                                                                         name: "George",
+                                                                         image: "www.image.com"
+                                                                         }})
+
+    OmniAuth.config.mock_auth[:vimeo] = OmniAuth::AuthHash.new({:provider => 'vimeo', :uid => '1ab3da5',
+                                                                info: { email: "test@test.com",
+                                                                        name: "Nancy",
+                                                                        pictures:[{height:30, link: "www.image1.com", type:"portrait", width: 30 },
+                                                                                  { height: 75, link: "www.images2.com", type:"portrait", width: 75},
+                                                                                  {height:100, link:"www.image.com", type: "portrait", width: 100}]
+                                                                                  }})
+  end
   end
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
@@ -115,4 +128,3 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-end
