@@ -1,32 +1,37 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/emilygordon/Ada/project-forks/seemore/app/controllers/sessions_controller.rb": [
+      "/Users/emilygordon/Ada/project-forks/seemore/app/controllers/searches_controller.rb": [
         1,
-        1,
-        1,
-        null,
         1,
         null,
         null,
         1,
-        22,
-        22,
-        18,
-        18,
-        14,
-        14,
-        null,
-        4,
-        null,
-        null,
-        4,
-        null,
-        null,
-        null,
-        1,
+        8,
         0,
         0,
+        null,
+        8,
+        4,
+        4,
+        4,
+        null,
+        4,
+        1,
+        null,
+        3,
+        3,
+        null,
+        4,
+        4,
+        4,
+        4,
+        1,
+        null,
+        3,
+        null,
+        null,
+        null,
         null,
         null
       ],
@@ -40,14 +45,14 @@
         1,
         null,
         1,
-        24,
+        16,
         null,
         null,
         null,
         1,
-        1,
-        1,
-        1,
+        8,
+        0,
+        0,
         null,
         null,
         null
@@ -101,12 +106,7 @@
         0,
         0
       ],
-      "/Users/emilygordon/Ada/project-forks/seemore/app/controllers/searches_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
+      "/Users/emilygordon/Ada/project-forks/seemore/app/controllers/sessions_controller.rb": [
         0,
         0,
         0,
@@ -243,6 +243,6 @@
         0
       ]
     },
-    "timestamp": 1452575031
+    "timestamp": 1452575659
   }
 }
