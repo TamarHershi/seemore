@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-01-11T20:14:58-08:00">2016-01-11T20:14:58-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-01-11T20:35:04-08:00">2016-01-11T20:35:04-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>10</b> files in total.
-    <b>218</b> relevant lines. 
+    <b>221</b> relevant lines. 
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>218</b> lines missed </span>
+    <span class="red"><b>221</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -83,10 +83,10 @@
       <tr>
         <td class="strong"><a href="#e275df93560c07e76291404882bb62567329397c" class="src_link" title="app/controllers/sessions_controller.rb">app/controllers/sessions_controller.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>28</td>
-        <td>28</td>
+        <td>27</td>
+        <td>27</td>
         <td>0</td>
-        <td>28</td>
+        <td>27</td>
         <td>0.0</td>
       </tr>
       
@@ -133,10 +133,10 @@
       <tr>
         <td class="strong"><a href="#afd0fcfcce87949e32dba50e2caa1b4c993ea430" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>40</td>
-        <td>40</td>
+        <td>44</td>
+        <td>44</td>
         <td>0</td>
-        <td>40</td>
+        <td>44</td>
         <td>0.0</td>
       </tr>
       
@@ -170,9 +170,9 @@
   <a name="Controllers"></a>
   <div>
     <b>5</b> files in total.
-    <b>134</b> relevant lines. 
+    <b>133</b> relevant lines. 
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>134</b> lines missed </span>
+    <span class="red"><b>133</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -221,10 +221,10 @@
       <tr>
         <td class="strong"><a href="#e275df93560c07e76291404882bb62567329397c" class="src_link" title="app/controllers/sessions_controller.rb">app/controllers/sessions_controller.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>28</td>
-        <td>28</td>
+        <td>27</td>
+        <td>27</td>
         <td>0</td>
-        <td>28</td>
+        <td>27</td>
         <td>0.0</td>
       </tr>
       
@@ -257,9 +257,9 @@
   <a name="Models"></a>
   <div>
     <b>5</b> files in total.
-    <b>84</b> relevant lines. 
+    <b>88</b> relevant lines. 
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>84</b> lines missed </span>
+    <span class="red"><b>88</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -308,10 +308,10 @@
       <tr>
         <td class="strong"><a href="#afd0fcfcce87949e32dba50e2caa1b4c993ea430" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>40</td>
-        <td>40</td>
+        <td>44</td>
+        <td>44</td>
         <td>0</td>
-        <td>40</td>
+        <td>44</td>
         <td>0.0</td>
       </tr>
       
@@ -1104,9 +1104,9 @@
     <h3>app/controllers/sessions_controller.rb</h3>
     <h4><span class="red">0.0 %</span> covered</h4>
     <div>
-      <b>28</b> relevant lines. 
+      <b>27</b> relevant lines. 
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>28</b> lines missed.</span>
+      <span class="red"><b>27</b> lines missed.</span>
     </div>
   </div>
   
@@ -1170,112 +1170,106 @@
         <li class="missed" data-hits="0" data-linenumber="10">
           
           
-          <code class="ruby">   raise</code>
+          <code class="ruby">   if auth_hash[&quot;uid&quot;]</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="11">
           
           
-          <code class="ruby">   if auth_hash[&quot;uid&quot;]</code>
+          <code class="ruby">     @user = User.find_or_create_from_omniauth(auth_hash)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="12">
           
           
-          <code class="ruby">     @user = User.find_or_create_from_omniauth(auth_hash)</code>
+          <code class="ruby">     if @user</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="13">
           
           
-          <code class="ruby">     if @user</code>
+          <code class="ruby">       session[:user_id] = @user.id</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="14">
           
           
-          <code class="ruby">       session[:user_id] = @user.id</code>
+          <code class="ruby">       redirect_to feed_path, notice: &quot;Welcome to CurateTV. Happy Curating!&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="15">
           
           
-          <code class="ruby">       redirect_to feed_path, notice: &quot;Welcome to CurateTV. Happy Curating!&quot;</code>
+          <code class="ruby">     else</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="16">
           
           
-          <code class="ruby">     else</code>
+          <code class="ruby">       redirect_to root_path, notice: &quot;Failed to save the user.&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="17">
           
           
-          <code class="ruby">       redirect_to root_path, notice: &quot;Failed to save the user.&quot;</code>
+          <code class="ruby">     end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="18">
           
           
-          <code class="ruby">     end</code>
+          <code class="ruby">   else</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="19">
           
           
-          <code class="ruby">   else</code>
+          <code class="ruby">     redirect_to root_path, notice: &quot;Failed to authenticate.&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="20">
           
           
-          <code class="ruby">     redirect_to root_path, notice: &quot;Failed to authenticate.&quot;</code>
+          <code class="ruby">   end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="21">
           
           
-          <code class="ruby">   end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="22">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="23">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  def destroy</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="24">
           
           
-          <code class="ruby">  def destroy</code>
+          <code class="ruby">    session[:user_id] = nil</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="25">
           
           
-          <code class="ruby">    session[:user_id] = nil</code>
+          <code class="ruby">    redirect_to root_path, notice: &quot;You&#39;ve logged out. See you next time.&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="26">
           
           
-          <code class="ruby">    redirect_to root_path, notice: &quot;You&#39;ve logged out. See you next time.&quot;</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="27">
-          
-          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="28">
+        <li class="missed" data-hits="0" data-linenumber="27">
           
           
           <code class="ruby">end</code>
@@ -1632,9 +1626,9 @@
     <h3>app/models/user.rb</h3>
     <h4><span class="red">0.0 %</span> covered</h4>
     <div>
-      <b>40</b> relevant lines. 
+      <b>44</b> relevant lines. 
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>40</b> lines missed.</span>
+      <span class="red"><b>44</b> lines missed.</span>
     </div>
   </div>
   
@@ -1752,130 +1746,154 @@
         <li class="missed" data-hits="0" data-linenumber="19">
           
           
-          <code class="ruby">     user.avatar_url = auth_hash[&quot;info&quot;][&quot;image&quot;]</code>
+          <code class="ruby">     if user.provider == &quot;twitter&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="20">
           
           
-          <code class="ruby">     if user.save</code>
+          <code class="ruby">       user.avatar_url = auth_hash[&quot;info&quot;][&quot;image&quot;]</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="21">
           
           
-          <code class="ruby">       return user</code>
+          <code class="ruby">     elsif user.provider == &quot;vimeo&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="22">
           
           
-          <code class="ruby">     else</code>
+          <code class="ruby">       user.avatar_url = auth_hash[&quot;info&quot;][&quot;pictures&quot;][2][&quot;link&quot;] if auth_hash[&quot;info&quot;][&quot;pictures&quot;]</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="23">
           
           
-          <code class="ruby">       return nil</code>
+          <code class="ruby">     end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="24">
           
           
-          <code class="ruby">     end</code>
+          <code class="ruby">     if user.save</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="25">
           
           
-          <code class="ruby">   end</code>
+          <code class="ruby">       return user</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="26">
           
           
-          <code class="ruby"> end</code>
+          <code class="ruby">     else</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="27">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">       return nil</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="28">
           
           
-          <code class="ruby"> def videos</code>
+          <code class="ruby">     end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="29">
           
           
-          <code class="ruby">  videos = []</code>
+          <code class="ruby">   end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="30">
           
           
-          <code class="ruby">   self.creators.each do |creator|</code>
+          <code class="ruby"> end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="31">
           
           
-          <code class="ruby">    if creator.provider == &quot;vimeo&quot;</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="32">
           
           
-          <code class="ruby">      creator.videos.each do |video|</code>
+          <code class="ruby"> def videos</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="33">
           
           
-          <code class="ruby">        videos &lt;&lt; video</code>
+          <code class="ruby">  videos = []</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="34">
           
           
-          <code class="ruby">      end</code>
+          <code class="ruby">   self.creators.each do |creator|</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="35">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">    if creator.provider == &quot;vimeo&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="36">
           
           
-          <code class="ruby">   end</code>
+          <code class="ruby">      creator.videos.each do |video|</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="37">
           
           
-          <code class="ruby">   return videos</code>
+          <code class="ruby">        videos &lt;&lt; video</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="38">
           
           
-          <code class="ruby"> end</code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="39">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="40">
+          
+          
+          <code class="ruby">   end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="41">
+          
+          
+          <code class="ruby">   return videos</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="42">
+          
+          
+          <code class="ruby"> end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="43">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="44">
           
           
           <code class="ruby">end</code>

@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe User, type: :model do
 
@@ -35,7 +36,7 @@ RSpec.describe User, type: :model do
 
       context "when it's invalid" do
         it "returns nil" do
-          user = User.find_or_create_from_omniauth({"uid" => "123", "info" => {}})
+          user = User.find_or_create_from_omniauth({"uid" => "123", provider: "twitter", "info" => {}})
           expect(user).to be_nil
         end
       end
@@ -75,7 +76,7 @@ RSpec.describe User, type: :model do
 
       context "when it's invalid" do
         it "returns nil" do
-          user = User.find_or_create_from_omniauth({"uid" => "123", "info" => {}})
+          user = User.find_or_create_from_omniauth({"uid" => "123", provider: "vimeo", "info" => {}})
           expect(user).to be_nil
         end
       end

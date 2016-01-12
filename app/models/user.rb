@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
      user.email      = auth_hash["info"]["email"]
      if user.provider == "twitter"
        user.avatar_url = auth_hash["info"]["image"]
-     else
-       user.avatar_url = auth_hash["info"]["pictures"][2]["link"]
+     elsif user.provider == "vimeo"
+       user.avatar_url = auth_hash["info"]["pictures"][2]["link"] if auth_hash["info"]["pictures"]
      end
      if user.save
        return user

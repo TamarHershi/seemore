@@ -133,7 +133,6 @@
         0,
         0,
         0,
-        0,
         0
       ],
       "/Users/emilygordon/Ada/project-forks/seemore/app/controllers/users_controller.rb": [
@@ -229,6 +228,10 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       "/Users/emilygordon/Ada/project-forks/seemore/app/models/video.rb": [
@@ -240,6 +243,6 @@
         0
       ]
     },
-    "timestamp": 1452572098
+    "timestamp": 1452573304
   }
 }
