@@ -119,6 +119,14 @@ RSpec.describe SessionsController, type: :controller do
       end
     end
 
+    describe "DELETE #destroy" do
+        it "redirects to root page" do
+          delete :destroy
+          expect(response).to redirect_to new_session_path
+          # expect(:notice).to include "You've logged out."
+        end
+      end
+
 
   end
 end
