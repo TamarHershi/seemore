@@ -8,15 +8,26 @@ RSpec.describe Creator, type: :model do
   let(:log_in) {
   current_user = create :user
   session[:user_id] = current_user.id
-  session[:access_token] = "1234454433"
   }
 
-  describe 'add videos' do
-    context "it create videos" do
-      it "has a data" do
+
+
+
+
+
+  describe 'create videos' do
+    before(:each) do
+      VCR.use_cassette 'get_videos' do
+
+    end
+    context "it gets videos data" do
+
+
+      # { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:developer] }
+
         log_in
       end
-        VCR.use_cassette 'get_videos' do
+
 
         end
     end
