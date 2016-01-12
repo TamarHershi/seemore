@@ -13,15 +13,16 @@ RSpec.describe SearchesController, type: :controller do
 
       let (:good_search_params) do
     {
-      search: "cat"
+      search: "cat",
+      provider: "vimeo"
 
     }
   end
 
     let (:bad_search_params) do
   {
-    search: "sssskljkkljdfskljlkjdfslkjfakljfdslkjdfksjlkljdfskjlfdskljfklsdjoiuwoiuwrqijdgsjkllkjsdfljkgsdjghsdajhgdsa"
-
+    search: "sssskljkkljdfskljlkjdfslkjfakljfdslkjdfksjlkljdfskjlfdskljfklsdjoiuwoiuwrqijdgsjkllkjsdfljkgsdjghsdajhgdsa",
+    provider: "vimeo"
   }
   end
 
