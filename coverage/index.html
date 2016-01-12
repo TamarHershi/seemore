@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-01-11T20:43:02-08:00">2016-01-11T20:43:02-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-01-11T20:50:17-08:00">2016-01-11T20:50:17-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.41
+         0.75
        </span>
     </span> hits/line)
   </h2>
@@ -57,7 +57,7 @@
         <td>11</td>
         <td>8</td>
         <td>3</td>
-        <td>1.6</td>
+        <td>2.6</td>
       </tr>
       
       <tr>
@@ -87,7 +87,7 @@
         <td>16</td>
         <td>14</td>
         <td>2</td>
-        <td>4.0</td>
+        <td>7.6</td>
       </tr>
       
       <tr>
@@ -162,8 +162,8 @@
     (<span class="covered_percent"><span class="red">19.47%</span></span>
      covered at
      <span class="covered_strength">
-       <span class="red">
-         0.72
+       <span class="green">
+         1.33
        </span>
     </span> hits/line)
   </h2>
@@ -195,7 +195,7 @@
         <td>11</td>
         <td>8</td>
         <td>3</td>
-        <td>1.6</td>
+        <td>2.6</td>
       </tr>
       
       <tr>
@@ -225,7 +225,7 @@
         <td>16</td>
         <td>14</td>
         <td>2</td>
-        <td>4.0</td>
+        <td>7.6</td>
       </tr>
       
       <tr>
@@ -519,8 +519,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="10">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="22" data-linenumber="10">
+          <span class="hits">22</span>
           
           <code class="ruby">   @current_user ||= User.find(session[:user_id]) if session[:user_id]</code>
         </li>
@@ -1161,38 +1161,38 @@
           <code class="ruby">  def create</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="9">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="22" data-linenumber="9">
+          <span class="hits">22</span>
           
           <code class="ruby">   auth_hash = request.env[&#39;omniauth.auth&#39;]</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="10">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="22" data-linenumber="10">
+          <span class="hits">22</span>
           
           <code class="ruby">   if auth_hash[&quot;uid&quot;]</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="11">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="18" data-linenumber="11">
+          <span class="hits">18</span>
           
           <code class="ruby">     @user = User.find_or_create_from_omniauth(auth_hash)</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="12">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="18" data-linenumber="12">
+          <span class="hits">18</span>
           
           <code class="ruby">     if @user</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="13">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="14" data-linenumber="13">
+          <span class="hits">14</span>
           
           <code class="ruby">       session[:user_id] = @user.id</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="14">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="14" data-linenumber="14">
+          <span class="hits">14</span>
           
           <code class="ruby">       redirect_to feed_path, notice: &quot;Welcome to CurateTV. Happy Curating!&quot;</code>
         </li>
@@ -1203,8 +1203,8 @@
           <code class="ruby">     else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="16">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="16">
+          <span class="hits">4</span>
           
           <code class="ruby">       redirect_to root_path, notice: &quot;Failed to save the user.&quot;</code>
         </li>
@@ -1221,8 +1221,8 @@
           <code class="ruby">   else</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="19">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="19">
+          <span class="hits">4</span>
           
           <code class="ruby">     redirect_to root_path, notice: &quot;Failed to authenticate.&quot;</code>
         </li>
