@@ -64,8 +64,19 @@ RSpec.configure do |config|
     # set per-provider (or default) authentication
     # hashes to return during testing.
 
-    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({:provider => 'twitter', :uid => '123545', info: {email: "a@b.com", name: "Ada", image: "http://pbs.twimg.com/profile_images/653340196990115840/D7awZGjG_normal.jpg"}})
-    OmniAuth.config.mock_auth[:vimeo] = OmniAuth::AuthHash.new({:provider => 'vimeo', :uid => '123677', info: {email: nil, name: "Ada", pictures:[{height:30, link: "https://i.vimeocdn.com/portrait/11061633_30x30.jpg", type:"portrait", width: 30 }, { height: 75, link: "https://i.vimeocdn.com/portrait/11061633_75x75.jpg", type:"portrait", width: 75}, {height:100, link:"https://i.vimeocdn.com/portrait/11061633_100x100.jpg", type: "portrait", width: 100}]}})
+    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({:provider => 'twitter', :uid => '1ab3da5',
+                                                                  info: {email: "test@test.com",
+                                                                         name: "George",
+                                                                         image: "www.image.com"
+                                                                         }})
+
+    OmniAuth.config.mock_auth[:vimeo] = OmniAuth::AuthHash.new({:provider => 'vimeo', :uid => '1ab3da5',
+                                                                info: { email: "test@test.com",
+                                                                        name: "Nancy",
+                                                                        pictures:[{height:30, link: "www.image1.com", type:"portrait", width: 30 },
+                                                                                  { height: 75, link: "www.images2.com", type:"portrait", width: 75},
+                                                                                  {height:100, link:"www.image.com", type: "portrait", width: 100}]
+                                                                                  }})
   end
   end
 # The settings below are suggested to provide a good initial experience
