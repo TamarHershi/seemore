@@ -33,15 +33,17 @@ context "when logged in with twitter" do
         end
       end
     end
+
+    describe "GET #create" do
+      context " " do
+          it "assigns the @current_user var" do
+            get :create, provider: :twitter
+            expect(assigns(:current_user)).to be_an_instance_of Creator
+          end
   end
 
 
-  # describe "GET #create" do
-  #   context "when using Twitter authorization" do
-  #       it "assigns the @current_user var" do
-  #         get :create, provider: :twitter
-  #         expect(assigns(:current_user)).to be_an_instance_of Creator
-  #       end
+
         #
         # it "assigns the session[:user_id]" do
         #   get :create, provider: :github

@@ -16,12 +16,21 @@ FactoryGirl.define do
     avatar_url "www.image.com"
   end
 
-  factory :creator do
+  factory :twitter_creator, class: Creator do
     name "Edward"
     description "HELLO!"
     profile_pic "www.profilepic.com"
     provider "twitter"
     uri "/user/edward"
+    uid "1ab3da5"
+  end
+
+  factory :vimeo_creator, class: Creator do
+    name "Nancy"
+    description "VIMEO!!"
+    profile_pic "www.profilepic.com"
+    provider "vimeo"
+    uri "/user/nancy"
     uid "1ab3da5"
   end
 
@@ -47,7 +56,9 @@ FactoryGirl.define do
 
   # category factories
   factory :category do
-    association :creator
+    # association w/ general creator
+    association :creator, factory: :twitter_creator
+    # association with users in general, and w/ this specific user
     association :user, factory: :twitter_user
   end
 
