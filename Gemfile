@@ -47,6 +47,8 @@ gem 'bootstrap-sass', '~> 3.3.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'typhoeus'
+
 group :production do
   gem "pg"
 end
@@ -59,6 +61,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'pry'
   gem 'factory_girl_rails'
+  gem 'vcr'
 end
 
 group :development do
