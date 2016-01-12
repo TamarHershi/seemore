@@ -27,9 +27,12 @@ gem "omniauth"
 gem "omniauth-github"
 gem "omniauth-twitter"
 gem "omniauth-vimeo"
+gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'httparty'
+gem 'twitter'
 
 gem 'bootstrap-sass', '~> 3.3.5'
+
 
 
 
@@ -55,6 +58,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'simplecov'
   gem 'pry'
+  gem 'factory_girl_rails'
 end
 
 group :development do
