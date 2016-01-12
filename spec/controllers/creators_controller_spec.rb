@@ -21,6 +21,7 @@ RSpec.describe CreatorsController, type: :controller do
         # it "shows creators that the user is following" do
         #   get :index
         # end
+      end
     end
   end
 
