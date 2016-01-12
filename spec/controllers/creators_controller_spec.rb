@@ -6,8 +6,9 @@ RSpec.describe CreatorsController, type: :controller do
 
 context "when logged in with twitter" do
 
-  let(:user) { create(:twitter_user) }
-  let(:category) { create(:category)}
+  let(:category) { create(:category) }
+  let(:user) { category.user }
+  let(:creator) { category.creator }
 
   before :each do
     session[:user_id] = user.id
@@ -16,7 +17,6 @@ context "when logged in with twitter" do
   describe "GET #index" do
       context "is successful" do
         it "redirects to creator index page" do
-          binding.pry
           get :index
           expect(response).to render_template :index
         end
@@ -28,8 +28,7 @@ context "when logged in with twitter" do
 
         it "shows creators that the user is following" do
           get :index
-          # expect(assigns(:creators)).to be_an_instance_of(Array)
-          # expect(assigns(:creators)).not_to be_empty
+          expect(assigns(:creators)).not_to be_empty
           expect(assigns(:creators)[0]).to be_an_instance_of(Creator)
         end
       end
