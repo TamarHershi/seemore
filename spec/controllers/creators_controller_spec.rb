@@ -13,11 +13,14 @@ RSpec.describe CreatorsController, type: :controller do
           session[:user_id] = twitter_user.id
         end
 
-          it "redirects to home page" do
-            get :index
-            expect(response).to render_template :index
+        it "redirects to home page" do
+          get :index
+          expect(response).to render_template :index
         end
-      end
+
+        # it "shows creators that the user is following" do
+        #   get :index
+        # end
     end
   end
 
@@ -32,8 +35,8 @@ RSpec.describe CreatorsController, type: :controller do
         # it "assigns the session[:user_id]" do
         #   get :create, provider: :github
         #   expect(session[:user_id]).to eq assigns(:user).id
-    end
-  end
+  #   end
+  # end
 
 
   describe "add_videos"  do
