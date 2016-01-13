@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'json'
+require "pry"
 
 RSpec.describe Creator, type: :model do
 
@@ -52,21 +53,24 @@ RSpec.describe Creator, type: :model do
         return params
       end
 
-      fit 'creates new Creator' do
+      it 'creates new Creator' do
         expect{ Creator.find_or_create(create_params_vimeo) }.to change(Creator, :count).by(1)
         expect(Creator.find_or_create(create_params_vimeo).name.downcase).to include("purple")
       end
 
       context 'the provider is Vimeo' do
-        before :each do
-          @vimeo_creator = Creator.find_or_create(create_params_vimeo)
-        end
+        # before :each do
+        #   @vimeo_creator = Creator.find_or_create(create_params_vimeo)
+        # end
 
-        fit 'saves some videos associated with that creator' do
+        it 'saves some videos associated with that creator' do
           expect(@vimeo_creator.videos.nil?).to be_falsey
         end
 
-        it 'if the videos are not populated correctly Creator is not saved ' do
+        fit 'if the videos are not populated correctly Creator is not saved ' do
+          vimeo_creator = FactoryGirl.build(:vimeo_user)
+          expect{ Creator.find_or_create(vimeo_creator) }.to raise_error(ArgumentError)
+          expect{ Creator.find_or_create(vimeo_creator) }.to change(Creator, :count).by(0)
         end
 
         it 'save the Creator if there are no videos' do

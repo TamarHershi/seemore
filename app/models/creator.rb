@@ -1,4 +1,5 @@
 require 'pry'
+
 class Creator < ActiveRecord::Base
   validates :name, uniqueness: true
   validates :uid, uniqueness: true
@@ -38,6 +39,7 @@ class Creator < ActiveRecord::Base
         if creator.save
           return creator
         else
+          raise ArgumentError, "Change this error message -- creator not saveds"
           return nil
         end
     end
