@@ -47,7 +47,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'webmock'
+
 
 group :production do
   gem "pg"
@@ -62,6 +62,7 @@ group :development, :test do
   gem 'pry'
   gem 'factory_girl_rails'
   gem 'vcr'
+  # gem 'webmock'
 end
 
 group :development do
@@ -72,4 +73,5 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'pry-rails'
 end
