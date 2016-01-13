@@ -25,7 +25,6 @@
                                     #  action: "follow",
                                      name: result.screen_name,
                                      provider: @provider,
-                                     bio: result.description,
                                      profile_pic: result.profile_image_uri,
                                      uid: result.id},
             class: "btn btn-default follow-btn" %>
@@ -34,7 +33,6 @@
                                      uid: result["uri"].gsub(/[^0-9]/, ""),
                                      name: result["name"],
                                      profile_pic: result["pictures"],
-                                     bio: result["bio"],
                                      provider: @provider},
              class: "btn btn-default follow-btn" %>
         </div>

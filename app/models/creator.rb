@@ -12,7 +12,6 @@ class Creator < ActiveRecord::Base
     if !creator.nil?
       return creator
     else
-      binding.pry
       Creator.transaction do
         creator = Creator.new(
             name: params["name"],

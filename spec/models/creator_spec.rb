@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'json'
 
 RSpec.describe Creator, type: :model do
 
@@ -31,13 +32,29 @@ RSpec.describe Creator, type: :model do
                       "uid" => "1ab3da5"
                     }
                   end
-      fit 'returns that creator' do
+      it 'returns that creator' do
         expect(Creator.find_or_create(params)).to eq(creator1)
       end
     end
 
-    context 'need to create new Creator' do
-      it 'creates new Creator' do
+    context 'need to create a new Creator', :vcr do
+      let(:create_params) do
+        vimeo_access_token = ENV["VIMEO_ACCESS_TOKEN"]
+        all_results = HTTParty.get("https://api.vimeo.com/users?page=1&per_page=25&query=purple&fields=uri,name,pictures",
+         headers: {"Authorization" => "bearer #{vimeo_access_token}", 'Accept' => 'application/json' }, format: :json).parsed_response
+        result = all_results["data"][0]
+        params = {
+          "name" => result["name"],
+          "profile_pic" => result["pictures"],
+          "provider" => "vimeo",
+          "uid" => result["uri"].gsub(/[^0-9]/, "")
+        }
+        return params
+      end
+
+      fit 'creates new Creator' do
+        expect{ Creator.find_or_create(create_params) }.to change(Creator, :count).by(1)
+        expect(Creator.find_or_create(create_params).name.downcase).to include("purple")
       end
 
       context 'the provider is Twitter' do
