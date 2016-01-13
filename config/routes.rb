@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get "/search" => "searches#search", as: :search
   delete "/logout" => "sessions#destroy", as: :logout
   get '/feed', to: "users#show", as: :feed
+  post '/follow', to:"creators#follow", as: :follow
 
   resources :sessions, except: [:update]
   resources :creators
-  
+
 end
