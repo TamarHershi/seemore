@@ -39,8 +39,8 @@ class CreatorsController < ApplicationController
         @creator.save
         @creator.users << @current_user
         @creator.create_videos
-        flash[:notice] = "You're now following #{@creator.name}."
       end
+      flash[:notice] = "You're now following #{@creator.name}."
       redirect_to :back
     end
   end

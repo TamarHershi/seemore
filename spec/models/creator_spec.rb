@@ -20,14 +20,12 @@ RSpec.describe Creator, type: :model do
     end
   end
 
-  describe 'create_videos' do
-    before(:each) do
-      VCR.use_cassette 'create_videos' do
-        
-      end
-    end
+  describe 'get_videos_info' do
 
     context "it gets videos data that isn't nil" do
+      before :each do
+        
+      end
       it "creates new Video instances for each video associated with a creator" do
         
       end
@@ -39,10 +37,12 @@ RSpec.describe Creator, type: :model do
 
         # log_in
     end
-  end
 
-  describe "add_tweets" do
-
+    context "it gets video data that is nil" do
+      it "returns nil" do
+        # expect(get_videos_info)
+      end
+    end
   end
 
 end
