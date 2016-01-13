@@ -38,7 +38,8 @@ class CreatorsController < ApplicationController
           end
         @creator.save
         @creator.users << @current_user
-        @creator.create_videos
+        videos_array = @creator.get_videos
+        Video.create_videos_for_creator_from_hashes(videos_array, @creator)
       end
       flash[:notice] = "You're now following #{@creator.name}."
       redirect_to :back
