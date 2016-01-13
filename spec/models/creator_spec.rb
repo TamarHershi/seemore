@@ -22,8 +22,17 @@ RSpec.describe Creator, type: :model do
   describe '.find or create' do
 
     context 'creator exists' do
-      it 'returns that creator' do
-
+      let(:params) do {
+                      "name" => "Edward",
+                      "description" => "HELLO!",
+                      "profile_pic" => "www.profilepic.com",
+                      "provider" => "twitter",
+                      "uri" => "/user/edward",
+                      "uid" => "1ab3da5"
+                    }
+                  end
+      fit 'returns that creator' do
+        expect(Creator.find_or_create(params)).to eq(creator1)
       end
     end
 
