@@ -38,7 +38,7 @@ RSpec.describe Creator, type: :model do
     end
 
     context 'need to create a new Creator', :vcr do
-      let(:create_params) do
+      let(:create_params_vimeo) do
         vimeo_access_token = ENV["VIMEO_ACCESS_TOKEN"]
         all_results = HTTParty.get("https://api.vimeo.com/users?page=1&per_page=25&query=purple&fields=uri,name,pictures",
          headers: {"Authorization" => "bearer #{vimeo_access_token}", 'Accept' => 'application/json' }, format: :json).parsed_response
@@ -53,8 +53,28 @@ RSpec.describe Creator, type: :model do
       end
 
       fit 'creates new Creator' do
-        expect{ Creator.find_or_create(create_params) }.to change(Creator, :count).by(1)
-        expect(Creator.find_or_create(create_params).name.downcase).to include("purple")
+        expect{ Creator.find_or_create(create_params_vimeo) }.to change(Creator, :count).by(1)
+        expect(Creator.find_or_create(create_params_vimeo).name.downcase).to include("purple")
+      end
+
+      context 'the provider is Vimeo' do
+        before :each do
+          @vimeo_creator = Creator.find_or_create(create_params_vimeo)
+        end
+
+        fit 'saves some videos associated with that creator' do
+          expect(@vimeo_creator.videos.nil?).to be_falsey
+        end
+
+        it 'if the videos are not populated correctly Creator is not saved ' do
+        end
+
+        it 'save the Creator if there are no videos' do
+        end
+
+        it 'has a profile picture' do
+        end
+
       end
 
       context 'the provider is Twitter' do
@@ -71,21 +91,6 @@ RSpec.describe Creator, type: :model do
         it 'has a profile picture' do
         end
 
-      end
-
-      context 'the provider is Vimeo' do
-
-        it 'saves the videos associated with that creator' do
-        end
-
-        it 'if the videos are not populated correctly Creator is not saved ' do
-        end
-
-        it 'save the Creator if there are no videos' do
-        end
-
-        it 'has a profile picture' do
-        end
       end
 
 
