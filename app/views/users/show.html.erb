@@ -7,4 +7,7 @@
     <% end %>
 </div>
 
-<%= raw(@tweet.html) %>
+<% @tweets.each do |tweet| %>
+  <% tweet = $twitter.oembed(tweet.uid) %>
+  <%= raw(tweet.html) %>
+<% end %>
