@@ -49,13 +49,4 @@ context "when logged in with twitter" do
   #   end
   # end
 
-
-  describe "add_videos"  do
-
-  end
-
-  describe "add_tweets" do
-
-  end
-
 end
