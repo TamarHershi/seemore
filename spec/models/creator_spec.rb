@@ -14,19 +14,21 @@ RSpec.describe Creator, type: :model do
   describe "validations" do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:uid) }
-    it "must have a unique uid" do
-      expect(:creator_1,name: nil).to_not be_valid
-      expect(:creator_1).to be_valid
-    end
 
-  describe 'add_videos' do
+    it "must have a unique uid" do
+      expect(:creator_1).to be_valid
+      expect(:creator_1).to_not be_valid
+    end
+  end
+
+  describe 'create_videos' do
     before(:each) do
-      VCR.use_cassette 'get_videos' do
+      VCR.use_cassette 'create_videos' do
         
       end
     end
 
-    context "it gets videos data" do
+    context "it gets videos data that isn't nil" do
       it "creates new Video instances for each video associated with a creator" do
         
       end
@@ -37,6 +39,7 @@ RSpec.describe Creator, type: :model do
       # { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:developer] }
 
         # log_in
+    end
   end
 
   describe "add_tweets" do
