@@ -1,4 +1,5 @@
 require "simplecov"
+require "vcr"
 
 SimpleCov.start('rails') do
   add_filter "/support/"
@@ -37,6 +38,7 @@ require 'rspec/rails'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.extend VCR::RSpec::Macros
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -64,4 +66,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/vcr'
+  c.hook_into :webmock # or :fakeweb
+  c.allow_http_connections_when_no_cassette = true
 end
