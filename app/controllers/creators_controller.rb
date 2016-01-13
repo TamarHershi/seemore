@@ -8,7 +8,7 @@ class CreatorsController < ApplicationController
     end
   end
 
-  def create
+  def follow
     creator = Creator.find_or_create(params)
     if creator.nil?
       flash[:error] = "Failed to follow"
