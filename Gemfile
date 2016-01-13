@@ -60,7 +60,7 @@ group :development, :test do
   gem 'pry'
   gem 'factory_girl_rails'
   gem 'vcr'
-  gem 'webmock'
+  # gem 'webmock'
 end
 
 group :development do

@@ -6,3 +6,8 @@
     </div>
     <% end %>
 </div>
+
+<% @tweets.each do |tweet| %>
+  <% tweet = $twitter.oembed(tweet.uid) %>
+  <%= raw(tweet.html) %>
+<% end %>
