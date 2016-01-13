@@ -68,6 +68,10 @@ class Creator < ActiveRecord::Base
     end
   end
 
+  def get_tweets
+    $twitter.user_timeline(self.name).take(25)
+  end
+
   def add_tweets
   end
 
