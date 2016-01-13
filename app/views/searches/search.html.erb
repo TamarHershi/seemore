@@ -22,7 +22,7 @@
           </h4>
           <% if @provider == "twitter" %>
             <%= button_to "Follow", {controller: "creators",
-                                     action: "follow",
+                                    #  action: "follow",
                                      name: result.screen_name,
                                      provider: @provider,
                                      bio: result.description,

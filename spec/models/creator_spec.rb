@@ -2,47 +2,36 @@ require 'rails_helper'
 
 RSpec.describe Creator, type: :model do
 
+  let (:creator1) {FactoryGirl.create(:creator)}
+  let (:user1) { FactoryGirl.create(:user)}
+
+  let(:log_in) {
+  current_user = create :user
+  session[:user_id] = current_user.id
+  }
+
   describe "validations" do
-    let (:creator1) {FactoryGirl.create(:creator)}
-    let (:user1) { FactoryGirl.create(:user)}
-
-    let(:log_in) {
-    current_user = FactoryGirl.create :user
-    session[:user_id] = current_user.id
-    }
-
-    # it { is_expected.to validate_presence_of(:name) }
-    # it { is_expected.to validate_presence_of(:uid) }
-
-    it "must have a unique name and uid" do
-      # expect(:creator1).to be_valid
-      # expect(:creator1).to_not be_valid
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:uid) }
+    it "must have a unique uid" do
+      expect(Creator.new(name: creator1.name, uid: "gooola")).to_not be_valid
+      expect(Creator.new(name: "zoxksmwbdjcusadk23053fd")).to be_valid
     end
   end
 
-  describe 'get_videos_info' do
-
-    context "it gets videos data that isn't nil" do
-      before :each do
-        
-      end
-      it "creates new Video instances for each video associated with a creator" do
-        
-      end
-      it "returns nil if creator has no media" do
-        
-      end
-
-      # { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:developer] }
-
-        # log_in
-    end
-
-    context "it gets video data that is nil" do
-      it "returns nil" do
-        # expect(get_videos_info)
-      end
-    end
+  describe '.find or create' do
   end
+
+
+  describe 'get videos info' do
+  end
+
+
+  describe 'create videos' do
+    before(:each) do
+      VCR.use_cassette 'get_videos' do
+
+    end
+
 
 end
