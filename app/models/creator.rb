@@ -46,6 +46,7 @@ class Creator < ActiveRecord::Base
       return nil
     else
       return videos
+    end
   end
 
   def create_videos
@@ -66,9 +67,8 @@ class Creator < ActiveRecord::Base
       end
     end
   end
-  
-  def add_tweets
 
+  def add_tweets
   end
 
 end
