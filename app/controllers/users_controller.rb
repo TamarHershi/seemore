@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+# get all tweets from User
+# save them to db
   def show
     @videos = @current_user.videos
     @tweets = $twitter.user_timeline("sarahinsea").take(25)
