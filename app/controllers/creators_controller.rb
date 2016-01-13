@@ -38,7 +38,7 @@ class CreatorsController < ApplicationController
           end
         @creator.save
         @creator.users << @current_user
-        @creator.add_videos
+        @creator.create_videos
         flash[:notice] = "You're now following #{@creator.name}."
       end
       redirect_to :back
