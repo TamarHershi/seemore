@@ -3,8 +3,9 @@ class Video < ActiveRecord::Base
   validates :name, :uri, :embed, :vimeo_id, :posted_at,
    presence: true
 
-   def self.create_videos__for_creator_from_hashes(video_data_array, creator)
-     video_data_array.each do |video_hash|
+  def self.create_videos__for_creator_from_hashes(video_data_array, creator)
+    if !video_data_array.nil?
+      video_data_array.each do |video_hash|
        video_id = video_hash["uri"].gsub(/[^0-9]/, "")
        vid = Video.new ({
        uri: "#{video_hash["uri"]}",
@@ -13,13 +14,13 @@ class Video < ActiveRecord::Base
        embed: "https:\/\/player.vimeo.com\/video\/#{video_id}",
        posted_at: "#{video_hash["created_time"]}",
        vimeo_id: "#{video_id}"
-     })
+      })
        vid.creator_id = creator.id
        vid.save
-     end
-   else
-     return nil
-   end
-   end
+      end
+    else
+      return nil
+    end
+  end
 
 end

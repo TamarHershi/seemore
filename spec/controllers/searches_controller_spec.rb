@@ -56,7 +56,7 @@ RSpec.describe SearchesController, type: :controller do
         get :search, good_search_params
         expect(response.status).to eq 200
       end
-      it "returns a search result" do
+      fit "returns a search result", :vcr => true do
         get :search, good_search_params
         expect(assigns(:results)).to be_an_instance_of(Array)
         expect(assigns(:results)).not_to be_empty
