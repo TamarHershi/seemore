@@ -2,22 +2,21 @@ require 'rails_helper'
 
 RSpec.describe Creator, type: :model do
 
-  let (:creator1) {FactoryGirl.create(:creator)}
-  let (:user1) { FactoryGirl.create(:user)}
-
-  let(:log_in) {
-  current_user = create :user
-  session[:user_id] = current_user.id
-  }
-
-
   describe "validations" do
+    let (:creator1) {FactoryGirl.create(:creator)}
+    let (:user1) { FactoryGirl.create(:user)}
+
+    let(:log_in) {
+    current_user = FactoryGirl.create :user
+    session[:user_id] = current_user.id
+    }
+
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:uid) }
 
-    it "must have a unique uid" do
-      expect(:creator_1).to be_valid
-      expect(:creator_1).to_not be_valid
+    fit "must have a unique uid" do
+      expect(:creator1).to be_valid
+      expect(:creator1).to_not be_valid
     end
   end
 
