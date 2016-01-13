@@ -1,60 +1,48 @@
 require 'rails_helper'
 
 RSpec.describe Creator, type: :model do
-<<<<<<< HEAD
 
-  let (:creator1) {FactoryGirl.create(:creator)}
-  let (:user1) { FactoryGirl.create(:user)}
+  describe "validations" do
+    let (:creator1) {FactoryGirl.create(:creator)}
+    let (:user1) { FactoryGirl.create(:user)}
 
-  let(:log_in) {
-  current_user = create :user
-  session[:user_id] = current_user.id
-  }
+    let(:log_in) {
+    current_user = FactoryGirl.create :user
+    session[:user_id] = current_user.id
+    }
 
+    # it { is_expected.to validate_presence_of(:name) }
+    # it { is_expected.to validate_presence_of(:uid) }
 
-
-
-
-
-  describe 'create videos' do
-    before(:each) do
-      VCR.use_cassette 'get_videos' do
-
+    it "must have a unique name and uid" do
+      # expect(:creator1).to be_valid
+      # expect(:creator1).to_not be_valid
     end
-    context "it gets videos data" do
+  end
 
+  describe 'get_videos_info' do
+
+    context "it gets videos data that isn't nil" do
+      before :each do
+        
+      end
+      it "creates new Video instances for each video associated with a creator" do
+        
+      end
+      it "returns nil if creator has no media" do
+        
+      end
 
       # { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:developer] }
 
-        log_in
+        # log_in
+    end
+
+    context "it gets video data that is nil" do
+      it "returns nil" do
+        # expect(get_videos_info)
       end
-
-
-        end
     end
-
-
-       end
-     end
   end
 
-  describe "validations" do
-    it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_presence_of(:uid) }
-    it "must have a unique uid" do
-      expect(Creator.new(name: creator1.name, uid: "gooola")).to_not be_valid
-      expect(Creator.new(name: "zoxksmwbdjcusadk23053fd")).to be_valid
-    end
-=======
-  describe "validations" do
-
->>>>>>> 1bcd911ecef8a4d7be8d68db591a1a00521e2cec
-  end
-
-  describe "add_videos"  do
-
-  end
-  describe "add_tweets" do
-
-  end
 end

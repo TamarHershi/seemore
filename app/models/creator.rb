@@ -6,20 +6,51 @@ class Creator < ActiveRecord::Base
   has_many :videos
   has_many :tweets
 
-  def get_videos_info
-    vimeo_access_token = ENV["VIMEO_ACCESS_TOKEN"]
-    videos = HTTParty.get("https://api.vimeo.com/#{self.uri}/videos",
-      headers: {"Authorization" => "bearer #{vimeo_access_token}", 'Accept' => 'application/json' }, format: :json).parsed_response
-      return videos
+  def self.find_or_create(params)
+    creator = self.find_by(uid: params["uid"], provider: params["provider"])
+    if !creator.nil?
+      return creator
+    else
+      creator = Creator.new(
+          name: params["name"],
+          provider: params["provider"],
+          uid: params["uid"]
+            )
+        if creator.provider == "vimeo"
+          if !params["profile_pic"].nil?
+            creator.profile_pic = params["profile_pic"]["sizes"][2]["link"]
+          else
+            creator.profile_pic = "vimeo_default_image.png"
+          end
+          creator.create_videos
+        elsif creator.provider == "twitter"
+          if !params["profile_pic"].nil?
+            creator.profile_pic = params["profile_pic"]
+          else
+            creator.profile_pic = "twitter_default_image.png"
+          end
+        end
+        if creator.save
+          return creator
+        else
+          return nil
+        end
+    end
   end
 
-  def videos?(videos)
-    !videos["data"].nil?
+  def get_videos_info
+    vimeo_access_token = ENV["VIMEO_ACCESS_TOKEN"]
+    videos = HTTParty.get("https://api.vimeo.com/users/#{self.uid}/videos",
+      headers: {"Authorization" => "bearer #{vimeo_access_token}", 'Accept' => 'application/json' }, format: :json).parsed_response
+    if videos["data"].nil?
+      return nil
+    else
+      return videos
   end
 
   def create_videos
     videos = get_videos_info
-    if videos?
+    if videos?(videos)
       videos["data"].each do |video_json|
         video_id = video_json["uri"].gsub(/[^0-9]/, "")
         vid = Video.new ({
@@ -35,7 +66,7 @@ class Creator < ActiveRecord::Base
       end
     end
   end
-
+  
   def add_tweets
 
   end
