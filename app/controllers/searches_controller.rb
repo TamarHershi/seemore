@@ -17,10 +17,9 @@ class SearchesController < ApplicationController
            @results = results["data"]
          end
       elsif @provider == "twitter"
+        @results = $twitter.user_search("#{search_term}").take(25)
         if @results.length == 0
           flash.now[:error] = "No results matched your search."
-        else
-          @results = $twitter.user_search("#{search_term}").take(25)
         end
       end
     end

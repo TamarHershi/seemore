@@ -42,13 +42,13 @@ http_interactions:
       Connection:
       - keep-alive
       X-Served-By:
-      - cache-iad2122-IAD, cache-sea1922-SEA
+      - cache-iad2127-IAD, cache-sea1920-SEA
       X-Cache:
       - MISS, MISS
       X-Cache-Hits:
       - 0, 0
       X-Timer:
-      - S1452652660.634943,VS0,VE217
+      - S1452652660.268272,VS0,VE244
       Vary:
       - Accept,Vimeo-Client-Id,Accept-Encoding
     body:

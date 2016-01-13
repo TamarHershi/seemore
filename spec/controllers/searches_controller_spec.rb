@@ -9,7 +9,7 @@ RSpec.describe SearchesController, type: :controller do
     session[:user_id] = user.id
   end
 
-  describe "GET #search" do
+  describe "GET #search", :vcr do
 
     context "when user does not specify twitter or vimeo" do
       let (:search_params) do
@@ -34,71 +34,70 @@ RSpec.describe SearchesController, type: :controller do
     context "when searching vimeo" do
 
       let (:good_search_params) do
-    {
-      search: "cat",
-      provider: "vimeo"
+        {
+          search: "cat",
+          provider: "vimeo"
 
-    }
-  end
+        }
+      end
 
-    let (:bad_search_params) do
-  {
-    search: "sssskljkkljdfskljlkjdfslkjfakljfdslkjdfksjlkljdfskjlfdskljfklsdjoiuwoiuwrqijdgsjkllkjsdfljkgsdjghsdajhgdsa",
-    provider: "vimeo"
-  }
-  end
+      let (:bad_search_params) do
+        {
+          search: "sssskljkkljdfskljlkjdfslkjfakljfdslkjdfksjlkljdfskjlfdskljfklsdjoiuwoiuwrqijdgsjkllkjsdfljkgsdjghsdajhgdsa",
+          provider: "vimeo"
+        }
+      end
 
-      it "renders the search template" do
+      it "renders the search template", :vcr do
         get :search, good_search_params
         expect(subject).to render_template(:search)
       end
-      it "is successful" do
+      it "is successful", :vcr do
         get :search, good_search_params
         expect(response.status).to eq 200
       end
-      fit "returns a search result", :vcr => true do
+      it "returns a search result", :vcr do
         get :search, good_search_params
         expect(assigns(:results)).to be_an_instance_of(Array)
         expect(assigns(:results)).not_to be_empty
         expect(assigns(:results)[1]["name"]).to include("cat")
       end
-      it "flash error if no search results" do
+      it "flash error if no search results", :vcr do
         get :search, bad_search_params
         expect(flash[:error]).to be_present
       end
     end
 
-    context "when searching twitter" do
+    context "when searching twitter", :vcr do
 
       let (:good_search_params) do
-    {
-      search: "cat",
-      provider: "twitter"
+        {
+        search: "cat",
+        provider: "twitter"
+        }
+      end
 
-    }
-  end
-
-    let (:bad_search_params) do
-  {
-    search: "sssskljkkljdfskljlkjdfslkjfaklrqijdgsjkllkjsdfljkgsdjghsdajhgdsa",
-    provider: "twitter"
-  }
-  end
-      it "renders the search template" do
+      let (:bad_search_params) do
+        {
+          search: "sssskljkkljdfskljlkjdfslkjfaklrqijdgsjkllkjsdfljkgsdjghsdajhgdsa",
+          provider: "twitter"
+        }
+      end
+      it "renders the search template", :vcr do
         get :search, good_search_params
         expect(subject).to render_template(:search)
       end
-      it "is successful" do
+      it "is successful", :vcr do
         get :search, good_search_params
         expect(response.status).to eq 200
       end
-      it "returns a search result" do
+      it "returns a search result", :vcr do
         get :search, good_search_params
         expect(assigns(:results)).to be_an_instance_of(Array)
         expect(assigns(:results)).not_to be_empty
         expect(assigns(:results)[0].name).to include("Cat")
       end
-      it "flash error if no search results" do
+      it "flash error if no search results", :vcr do
         get :search, bad_search_params
         expect(flash[:error]).to be_present
       end
