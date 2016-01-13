@@ -47,7 +47,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'typhoeus'
+gem 'webmock'
 
 group :production do
   gem "pg"

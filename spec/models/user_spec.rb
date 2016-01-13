@@ -1,7 +1,12 @@
 require 'rails_helper'
-require 'pry'
 
 RSpec.describe User, type: :model do
+
+  describe "can be instantiated" do
+    it "exists" do
+      expect(User.new).not_to be_nil
+    end
+  end
 
   describe "twitter oauth" do
     let(:user) { build(:twitter_user) }
