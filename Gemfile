@@ -47,8 +47,6 @@ gem 'bootstrap-sass', '~> 3.3.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'webmock'
-
 group :production do
   gem "pg"
 end
@@ -62,6 +60,7 @@ group :development, :test do
   gem 'pry'
   gem 'factory_girl_rails'
   gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
