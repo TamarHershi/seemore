@@ -49,10 +49,14 @@ class Creator < ActiveRecord::Base
     vimeo_access_token = ENV["VIMEO_ACCESS_TOKEN"]
     videos = HTTParty.get("https://api.vimeo.com/users/#{self.uid}/videos",
       headers: {"Authorization" => "bearer #{vimeo_access_token}", 'Accept' => 'application/json' }, format: :json).parsed_response
-    if videos["data"].nil?
-      return nil
-    else
-      return videos["data"]
+    if videos["error"].nil?
+      if videos["data"].nil?
+        return nil
+      else
+        return videos["data"]
+      end
+    elsif !videos["error"].nil?
+      # raise an error here, this means vimeo doesn't like the user
     end
   end
 
