@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :categories
   has_many :creators, through: :categories
   has_many :tweets, through: :creators
+  has_many :videos, through: :creators
   validates :name, :uid, :provider,
    presence: true
 
@@ -30,16 +31,16 @@ class User < ActiveRecord::Base
    end
  end
 
- def videos
-  videos = []
-   self.creators.each do |creator|
-    if creator.provider == "vimeo"
-      creator.videos.each do |video|
-        videos << video
-      end
-    end
-   end
-   return videos
- end
+ # def videos
+ #  videos = []
+ #   self.creators.each do |creator|
+ #    if creator.provider == "vimeo"
+ #      creator.videos.each do |video|
+ #        videos << video
+ #      end
+ #    end
+ #   end
+ #   return videos
+ # end
 
 end
