@@ -21,14 +21,23 @@
             <%= result["name"] if @provider == "vimeo" %>
           </h4>
           <% if @provider == "twitter" %>
-            <%= button_to "Follow", {controller: "creators",
-                                     action: "follow",
-                                     name: result.screen_name,
-                                     provider: @provider,
-                                     bio: result.description,
-                                     profile_pic: result.profile_image_uri,
-                                     uid: result.id},
-            class: "btn btn-default follow-btn" %>
+            <% if !@current_user.twitter_follow?(result) %>
+              <%= button_to "Follow", {controller: "creators",
+                                       action: "follow",
+                                       name: result.screen_name,
+                                       provider: @provider,
+                                       bio: result.description,
+                                       profile_pic: result.profile_image_uri,
+                                       uid: result.id},
+              class: "btn btn-default follow-btn" %>
+            <% else %>
+                <%= button_to "Unfollow", {controller: "creators",
+                                      action: "unfollow",
+                                      name: result.screen_name,
+                                      provider: @provider,
+                                      uid: result.id},
+             class: "btn btn-default follow-btn" %>
+             <% end %>
           <% elsif @provider == "vimeo" %>
             <%= button_to "Follow", {controller: "creators",
                                      action: "follow",

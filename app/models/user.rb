@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :categories
   has_many :creators, through: :categories
+  has_many :tweets, through: :creators
+  has_many :videos, through: :creators
   validates_presence_of :name, :uid, :provider
   validates_uniqueness_of :uid
 
@@ -28,6 +30,15 @@ class User < ActiveRecord::Base
      end
    end
  end
+
+
+  def twitter_follow?(result)
+    self.creators.each do |creator|
+      if (result.name == creator[:name])
+        return true
+      end
+    end
+  end
 
  # def self.creator?(result)
  #   creator = @current_user.find_by(uid: params["#{result.id}"], provider: params["twitter"])

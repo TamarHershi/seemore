@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy", as: :logout
   get '/feed', to: "users#show", as: :feed
   post '/follow', to:"creators#follow", as: :follow
+  post '/unfollow', to:"creators#unfollow", as: :unfollow
 
   resources :sessions, except: [:update]
   resources :creators
