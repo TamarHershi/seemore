@@ -29,14 +29,14 @@
                                        bio: result.description,
                                        profile_pic: result.profile_image_uri,
                                        uid: result.id},
-                                       class: "btn btn-default follow-btn" %>
+                                       class: "btn btn-default" %>
             <% else %>
                 <%= button_to "Unfollow", {controller: "creators",
                                       action: "unfollow",
                                       name: result.screen_name,
                                       provider: @provider,
                                       uid: result.id},
-                                      class: "btn btn-default follow-btn" %>
+                                      class: "btn btn-default" %>
 
             <% end %>
           <% elsif @provider == "vimeo" %>
@@ -48,14 +48,14 @@
                                        profile_pic: result["pictures"],
                                        bio: result["bio"],
                                        provider: @provider},
-                                       class: "btn btn-default follow-btn" %>
+                                       class: "btn btn-default" %>
 
             <% else %>
               <%= button_to "Unfollow", {controller: "creators",
                                        action: "unfollow",
                                        uid: result["uri"].gsub(/[^0-9]/, ""),
                                        provider: @provider},
-                                       class: "btn btn-default follow-btn" %>
+                                       class: "btn btn-default" %>
             <% end %>
          <% end %>
          </div>
