@@ -1,8 +1,6 @@
-require 'pry'
-
 class Creator < ActiveRecord::Base
-  validates :name, uniqueness: true, presence: true
-  validates :uid, uniqueness: true, presence: true
+  validates_presence_of :name, :uid, :provider
+  validates_uniqueness_of :uid
   has_many :categories
   has_many :users, through: :categories
   has_many :videos

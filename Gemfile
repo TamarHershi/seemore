@@ -63,7 +63,15 @@ group :development, :test do
   gem 'simplecov'
   gem 'pry'
   gem 'factory_girl_rails'
+<<<<<<< HEAD
   gem 'vcr', '3.0.1'
+=======
+  gem 'vcr', '2.2.5'
+end
+
+group :test do
+gem 'webmock'
+>>>>>>> unfollow
 end
 
 group :development do

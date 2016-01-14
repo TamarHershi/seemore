@@ -1,10 +1,9 @@
 class User < ActiveRecord::Base
   has_many :categories
   has_many :creators, through: :categories
-  has_many :tweets, through: :creators
-  has_many :videos, through: :creators
-  validates :name, :uid, :provider,
-   presence: true
+  validates_presence_of :name, :uid, :provider
+  validates_uniqueness_of :uid
+
 
  def self.find_or_create_from_omniauth(auth_hash)
    user = self.find_by(uid: auth_hash["uid"], provider: auth_hash["provider"])

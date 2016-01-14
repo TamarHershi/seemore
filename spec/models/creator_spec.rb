@@ -12,7 +12,7 @@ RSpec.describe Creator, type: :model do
   session[:user_id] = current_user.id
   }
 
-  describe "validations" do
+  describe ".validations" do
     # it { is_expected.to validate_presence_of(:name) }
     # it { is_expected.to validate_presence_of(:uid) }
     it "must have a unique name and uid" do
