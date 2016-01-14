@@ -17,12 +17,10 @@
           <div class="search-box">
             <%= text_field_tag :search, params[:search], placeholder: "Search" %>
             <button class="btn btn-default search-button" type="submit" >Search </button>
-            <i class="fa fa-twitter"></i>
-            <i class="fa fa-vimeo"></i>
             <%= radio_button_tag(:provider, "twitter", checked: true) %>
-            <%= label_tag(:twitter, "Twitter") %>
+            <i class="fa fa-twitter"></i>
             <%= radio_button_tag(:provider, "vimeo") %>
-            <%= label_tag(:vimeo, "Vimeo") %>
+            <i class="fa fa-vimeo"></i>
           </div>
         <% end %>
       <% else %>
