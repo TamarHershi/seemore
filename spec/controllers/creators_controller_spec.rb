@@ -1,23 +1,39 @@
 require 'rails_helper'
 require 'spec_helper'
+require 'pry'
 
 RSpec.describe CreatorsController, type: :controller do
 
+  
+  let(:user) {create(:twitter_user) }
+
+  let(:creator_params) do
+    { name: "Edward",
+      provider: "twitter",
+      bio: "Hello",
+      profile_pic: "asdf",
+      uid: "fdsfdsfs"
+    }
+  end
+
+  before :each do
+    session[:user_id] = user.id
+  end
+
   describe "GET index" do
 
-    context "user has not followed any creators" do
-      let(:user) {create(:twitter_user) }
+    # context "user has not followed any creators" do
+    #   let(:user2) {create(:twitter_user_2) }
+    #
+    #   before :each do
+    #     session[:user_id] = user2.id
+    #   end
 
-      before :each do
-        session[:user_id] = user.id
-      end
-
-# this doesn't work ATM - need to change twitter_user to new build
       # it "gives a flash notice" do
       #   get :index
-      #   expect(flash[:notice]).to be_present
+      #   expect(flash[:notice]).to include "Try following some people first!"
       # end
-    end
+    # end
 
     context "user has followed a creator" do
       let(:category) { create(:category) }
@@ -25,7 +41,7 @@ RSpec.describe CreatorsController, type: :controller do
       let(:creator) { category.creator }
 
       before :each do
-        session[:user_id] = user.id
+        request.env["HTTP_REFERER"] = "from_where_I_was"
       end
 
       context "is successful" do
@@ -48,46 +64,68 @@ RSpec.describe CreatorsController, type: :controller do
     end
   end
 
-  describe "POST create" do
+  describe "POST follow" do
+
+    before :each do
+      request.env["HTTP_REFERER"] = "from_where_I_was"
+    end
+
     context "it finds an existing creator" do
       let(:user) {create(:twitter_user) }
+      let (:creator) {create(:twitter_creator) }
 
-      before :each do
-        session[:user_id] = user.id
-        request.env["HTTP_REFERER"] = "from_where_I_was"
-      end
-
-      it "returns an instance of Creator if one already exists for a certain provider user" do
-        # add all parameter for params
-        creator = Creator.find_or_create(uid: "1ab3da5")
-        get :follow
-        expect(creator).to be_an_instance_of(Creator)
+      it "follows a creator" do
+        get :follow, creator_params
+        expect(flash[:notice]).to include "You're now following #{creator.name}."
         expect(subject).to redirect_to "from_where_I_was"
       end
     end
 
-    # it "flashes an error if creator doesn't exist" do
+    # context "it gives an error when creator doesn't exist" do
+    #    #
+    #   let(:bad_params) do
+    #     { name: "Edward",
+    #       provider: "twitter",
+    #       bio: "Hello",
+    #     }
+    #   end
     #
+    #   before :each do
+    #     request.env["HTTP_REFERER"] = "from_where_I_was"
+    #   end
+    #
+    #   it "flashes an error if creator doesn't exist" do
+    #     creator = Creator.find_or_create(bad_params)
+    #     get :follow
+    #     expect(flash[:notice]).to include "Failed to follow"
+    #     expect(subject).to redirect_to "from_where_I_was"
+    #   end
     # end
     #
-    # it "creates a new instance of Creator to follow if one doesn't exist" do
     #
+
+    # it "does not create duplicate instances of Creator with same provider & uid" do
+    # expect {get :follow, provider: :vimeo}.to change(Creator, :count).by(0)
     # end
-    #
-    # it "saves all the media for a new Creator" do
-    #
-    # end
-    # it "does not create duplicate instances Creator with same proivder & uid" do
-    #
-    # end
-    # it "does not allow you to follow a Creator you're already following" do
-    #
-    # end
-    # it "does not save new instance of Creator unless media is saved as well" do
-    #
-    # end
-    # it "sets up the Categories relationship between @current_user and @creator" do
-    #
-    # end
+
+    context "user is following a paricular creator" do
+
+      let(:category) { create(:category) }
+      let(:user) { category.user }
+      let(:creator) { category.creator }
+
+      fit "you cannot follow a Creator you're already following" do
+        get :follow, creator_params
+        expect(flash[:notice]).to include "You're already following #{creator.name}"
+        expect(subject).to redirect_to "from_where_I_was"
+      end
+
+      # it "does not save new instance of Creator unless media is saved as well" do
+      #
+      # end
+      # it "sets up the Categories relationship between @current_user and @creator" do
+      #
+      # end
+    end
   end
 end
