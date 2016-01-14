@@ -28,7 +28,6 @@ class Creator < ActiveRecord::Base
             creator.save
             video_data_array = creator.get_videos_info
             Video.create_videos_for_creator_from_hashes(video_data_array, creator)
-            creator.create_videos
           elsif creator.provider == "twitter"
             if !params["profile_pic"].nil?
               creator.profile_pic = params["profile_pic"]
@@ -39,11 +38,11 @@ class Creator < ActiveRecord::Base
             Tweet.find_or_create_tweets(creator)
           end
         end
-      if creator.save
-        return creator
-      else
-        return nil
-      end
+    end
+    if creator.save
+      return creator
+    else
+      return nil
     end
   end
 
@@ -62,24 +61,24 @@ class Creator < ActiveRecord::Base
     end
   end
 
-  def create_videos
-    videos = get_videos_info
-    if videos?(videos)
-      videos["data"].each do |video_json|
-        video_id = video_json["uri"].gsub(/[^0-9]/, "")
-        vid = Video.new ({
-        uri: "#{video_json["uri"]}",
-        name: "#{video_json["name"]}",
-        description: "#{video_json["description"]}",
-        embed: "https:\/\/player.vimeo.com\/video\/#{video_id}",
-        posted_at: "#{video_json["created_time"]}",
-        vimeo_id: "#{video_id}"
-      })
-        vid.creator_id = self.id
-        vid.save
-      end
-    end
-  end
+  # def create_videos
+  #   videos = get_videos_info
+  #   if videos?(videos)
+  #     videos["data"].each do |video_json|
+  #       video_id = video_json["uri"].gsub(/[^0-9]/, "")
+  #       vid = Video.new ({
+  #       uri: "#{video_json["uri"]}",
+  #       name: "#{video_json["name"]}",
+  #       description: "#{video_json["description"]}",
+  #       embed: "https:\/\/player.vimeo.com\/video\/#{video_id}",
+  #       posted_at: "#{video_json["created_time"]}",
+  #       vimeo_id: "#{video_id}"
+  #     })
+  #       vid.creator_id = self.id
+  #       vid.save
+  #     end
+  #   end
+  # end
 
   def get_tweets
     $twitter.user_timeline(self.name).take(25)

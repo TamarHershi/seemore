@@ -20,7 +20,7 @@ FactoryGirl.define do
     name "Edward"
     description "HELLO!"
     profile_pic "www.profilepic.com"
-    provider "vimeo"
+    provider "twitter"
     uri "/user/edward"
     uid "fdsfdsfs"
   end

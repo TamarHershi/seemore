@@ -59,9 +59,9 @@ RSpec.describe Creator, type: :model do
       end
 
       context 'the provider is Vimeo' do
-        # before :each do
-        #   @vimeo_creator = Creator.find_or_create(create_params_vimeo)
-        # end
+        before :each do
+          @vimeo_creator = Creator.find_or_create(create_params_vimeo)
+        end
 
         it 'saves some videos associated with that creator' do
           expect(@vimeo_creator.videos.nil?).to be_falsey
