@@ -67,7 +67,7 @@ RSpec.describe Creator, type: :model do
           expect(@vimeo_creator.videos.nil?).to be_falsey
         end
 
-        fit 'if the videos are not populated correctly Creator is not saved ' do
+        it 'if the videos are not populated correctly Creator is not saved ' do
           vimeo_creator = FactoryGirl.build(:vimeo_user)
           expect{ Creator.find_or_create(vimeo_creator) }.to raise_error(ArgumentError)
           expect{ Creator.find_or_create(vimeo_creator) }.to change(Creator, :count).by(0)
