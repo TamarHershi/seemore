@@ -22,6 +22,12 @@ class CreatorsController < ApplicationController
     end
       redirect_to :back
   end
+
+  def unfollow
+    creator = Creator.find_or_create(params)
+    @current_user.creators.delete(creator)
+    redirect_to :back
+  end
 end
 
       # if !params["profile_pic"].nil?

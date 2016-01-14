@@ -3,6 +3,7 @@ class SearchesController < ApplicationController
 
 
   def search
+    @current_user = @current_user
     if params[:provider].nil?
       flash.now[:notice] = "Please select whether you want to search Twitter or Vimeo."
       render :search
