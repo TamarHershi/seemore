@@ -1,3 +1,4 @@
+<% require 'pry' %>
 <div class="row">
   <h1>
     Search Results
@@ -21,7 +22,7 @@
             <%= result["name"] if @provider == "vimeo" %>
           </h4>
           <% if @provider == "twitter" %>
-            <% if !@current_user.twitter_follow?(result) %>
+            <% if !(@current_user.twitter_follow?(result)) %>
               <%= button_to "Follow", {controller: "creators",
                                        action: "follow",
                                        name: result.screen_name,

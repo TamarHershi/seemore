@@ -1,3 +1,4 @@
+require 'pry'
 class User < ActiveRecord::Base
   has_many :categories
   has_many :creators, through: :categories
@@ -34,7 +35,8 @@ class User < ActiveRecord::Base
 
   def twitter_follow?(result)
     self.creators.each do |creator|
-      if (result.name == creator[:name])
+      if result.name == creator[:name]
+        # binding.pry
         return true
       end
     end
