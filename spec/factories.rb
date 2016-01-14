@@ -22,7 +22,7 @@ FactoryGirl.define do
     profile_pic "www.profilepic.com"
     provider "twitter"
     uri "/user/edward"
-    uid "1ab3da5"
+    uid "fdsfdsfs"
   end
 
   factory :vimeo_creator, class: Creator do

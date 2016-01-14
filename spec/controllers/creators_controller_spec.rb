@@ -11,6 +11,8 @@ RSpec.describe CreatorsController, type: :controller do
       session[:user_id] = user.id
     end
 
+    describe "GET index" do
+
     context "is successful" do
       it "renders creator index page" do
         get :index
