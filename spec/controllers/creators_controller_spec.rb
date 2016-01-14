@@ -28,7 +28,6 @@ RSpec.describe CreatorsController, type: :controller do
         expect(assigns(:creators)[0]).to be_an_instance_of(Creator)
       end
     end
-  end
 
   describe "POST create" do
 
