@@ -1,7 +1,7 @@
 class Video < ActiveRecord::Base
   belongs_to :creator
-  validates :name, :uri, :embed, :vimeo_id, :posted_at,
-   presence: true
+  validates_presence_of :uri, :embed, :vimeo_id, :posted_at
+  validates_uniqueness_of :uri
 
   def self.create_videos_for_creator_from_hashes(video_data_array, creator)
     if !video_data_array.nil?
