@@ -30,6 +30,7 @@
             class: "btn btn-default follow-btn" %>
           <% elsif @provider == "vimeo" %>
             <%= button_to "Follow", {controller: "creators",
+                                     action: "follow",
                                      uid: result["uri"].gsub(/[^0-9]/, ""),
                                      name: result["name"],
                                      profile_pic: result["pictures"],

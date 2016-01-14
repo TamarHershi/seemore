@@ -28,20 +28,22 @@ class Creator < ActiveRecord::Base
             creator.save
             video_data_array = creator.get_videos_info
             Video.create_videos_for_creator_from_hashes(video_data_array, creator)
+            creator.create_videos
           elsif creator.provider == "twitter"
             if !params["profile_pic"].nil?
               creator.profile_pic = params["profile_pic"]
             else
               creator.profile_pic = "twitter_default_image.png"
             end
+            creator.save
+            Tweet.find_or_create_tweets(creator)
           end
         end
-        if creator.save
-          return creator
-        else
-          raise ArgumentError, "Change this error message -- creator not saveds"
-          return nil
-        end
+      if creator.save
+        return creator
+      else
+        return nil
+      end
     end
   end
 
@@ -79,7 +81,8 @@ class Creator < ActiveRecord::Base
     end
   end
 
-  def add_tweets
+  def get_tweets
+    $twitter.user_timeline(self.name).take(25)
   end
 
 end

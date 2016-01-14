@@ -4,7 +4,7 @@ require "pry"
 
 RSpec.describe Creator, type: :model do
 
-  let!(:creator1) {FactoryGirl.create(:creator)}
+  let!(:creator1) {FactoryGirl.create(:twitter_creator)}
   let!(:user1) { FactoryGirl.create(:twitter_user)}
 
   let(:log_in) {
@@ -30,7 +30,7 @@ RSpec.describe Creator, type: :model do
                       "profile_pic" => "www.profilepic.com",
                       "provider" => "twitter",
                       "uri" => "/user/edward",
-                      "uid" => "1ab3da5"
+                      "uid" => "fdsfdsfs"
                     }
                   end
       it 'returns that creator' do

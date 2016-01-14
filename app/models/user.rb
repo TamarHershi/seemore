@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :categories
   has_many :creators, through: :categories
+  has_many :tweets, through: :creators
   validates :name, :uid, :provider,
    presence: true
 
