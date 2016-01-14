@@ -51,6 +51,10 @@ group :production do
   gem "pg"
 end
 
+group :test do
+  gem 'webmock'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -60,7 +64,6 @@ group :development, :test do
   gem 'pry'
   gem 'factory_girl_rails'
   gem 'vcr', '3.0.1'
-  gem 'webmock'
 end
 
 group :development do
