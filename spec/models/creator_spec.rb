@@ -13,16 +13,19 @@ RSpec.describe Creator, type: :model do
   }
 
   describe ".validations" do
-    # it { is_expected.to validate_presence_of(:name) }
-    # it { is_expected.to validate_presence_of(:uid) }
-    it "must have a unique name and uid" do
-      expect(Creator.new(name: creator1.name, uid: "gooola")).to_not be_valid
-      expect(Creator.new(name: "zoxksmwbdjcusadk23053fd")).to be_valid
+    it "name must be present" do
+      expect(Creator.new(name: nil, uid:"12233344")).to_not be_valid
+    end
+    it "uid must be present" do
+      expect(Creator.new(name: "cat", uid: nil)).to_not be_valid
+    end
+
+    it "must have a unique uid" do
+      expect(Creator.new(name: "cat", uid: creator1.name )).to_not be_valid
     end
   end
 
   describe '.find or create' do
-
     context 'creator exists' do
       let(:params) do {
                       "name" => "Edward",
@@ -38,27 +41,30 @@ RSpec.describe Creator, type: :model do
       end
     end
 
-    context 'need to create a new Creator', :vcr do
-      let(:create_params_vimeo) do
-        vimeo_access_token = ENV["VIMEO_ACCESS_TOKEN"]
-        all_results = HTTParty.get("https://api.vimeo.com/users?page=1&per_page=25&query=purple&fields=uri,name,pictures",
-         headers: {"Authorization" => "bearer #{vimeo_access_token}", 'Accept' => 'application/json' }, format: :json).parsed_response
-        result = all_results["data"][0]
-        params = {
-          "name" => result["name"],
-          "profile_pic" => result["pictures"],
-          "provider" => "vimeo",
-          "uid" => result["uri"].gsub(/[^0-9]/, "")
-        }
-        return params
+    context 'when the provider is Vimeo', :vcr do
+
+        let(:create_params_vimeo) do
+          vimeo_access_token = ENV["VIMEO_ACCESS_TOKEN"]
+          all_results = HTTParty.get("https://api.vimeo.com/users?page=1&per_page=25&query=purple&fields=uri,name,pictures",
+           headers: {"Authorization" => "bearer #{vimeo_access_token}", 'Accept' => 'application/json' }, format: :json).parsed_response
+          result = all_results["data"][0]
+          params = {
+            "name" => result["name"],
+            "profile_pic" => result["pictures"],
+            "provider" => "vimeo",
+            "uid" => result["uri"].gsub(/[^0-9]/, "")
+          }
+          return params
+        end
+      context 'when following a new vimeo creator' do
+        it 'creates new vimeo Creator' do
+          expect{ Creator.find_or_create(create_params_vimeo) }.to change(Creator, :count).by(1)
+          expect(Creator.find_or_create(create_params_vimeo).name.downcase).to include("purple")
+          expect(Creator.find_or_create(create_params_vimeo).provider).to eq("vimeo")
+        end
       end
 
-      it 'creates new Creator' do
-        expect{ Creator.find_or_create(create_params_vimeo) }.to change(Creator, :count).by(1)
-        expect(Creator.find_or_create(create_params_vimeo).name.downcase).to include("purple")
-      end
-
-      context 'the provider is Vimeo' do
+      context 'creates videos associated with the creator' do
         before :each do
           @vimeo_creator = Creator.find_or_create(create_params_vimeo)
         end
@@ -68,9 +74,12 @@ RSpec.describe Creator, type: :model do
         end
 
         it 'if the videos are not populated correctly Creator is not saved ' do
-          vimeo_creator = FactoryGirl.build(:vimeo_user)
-          expect{ Creator.find_or_create(vimeo_creator) }.to raise_error(ArgumentError)
-          expect{ Creator.find_or_create(vimeo_creator) }.to change(Creator, :count).by(0)
+          bad_vimeo_creator_params = {
+            "provider" => "vimeo",
+            "uid" => "21222444"
+          }
+          expect{ Creator.find_or_create(bad_vimeo_creator_params) }.to raise_error(ArgumentError)
+          expect{ Creator.find_or_create(bad_vimeo_creator_params) }.to change(Creator, :count).by(0)
         end
 
         it 'save the Creator if there are no videos' do
@@ -80,39 +89,36 @@ RSpec.describe Creator, type: :model do
         end
 
       end
+    end
 
-      context 'the provider is Twitter' do
+      context 'when following a new twitter creator', :vcr do
 
-        it 'saves the tweets that associated with that creator' do
+        let(:create_params_twitter) do
+          {
+            "name" => "CutePicsOfCats",
+            "profile_pic" => "http://pbs.twimg.com/profile_images/567285191169687553/7kg_TF4l_normal.jpeg",
+            "provider" => "twitter",
+            "uid" => "3040591972"
+          }
         end
 
-        it 'if the tweets are not populated correctly Creator is not saved ' do
+        it 'creates new twitter Creator' do
+          expect{ Creator.find_or_create(create_params_twitter) }.to change(Creator, :count).by(1)
+          expect(Creator.find_or_create(create_params_twitter).name).to eq("CutePicsOfCats")
+          expect(Creator.find_or_create(create_params_twitter).provider).to eq("twitter")
         end
-
-        it 'save the Creator if there are no tweets' do
-        end
-
-        it 'has a profile picture' do
-        end
-
-      end
-
-
       end
     end
-  end
-
-
-  describe 'get videos info' do
-  end
-
-
-  describe 'create videos' do
-    before(:each) do
-      VCR.use_cassette 'get_videos' do
-
-    end
-  end
-
-
 end
+
+  # describe 'get videos info' do
+  # end
+
+
+#   describe 'create videos' do
+#     before(:each) do
+#       VCR.use_cassette 'get_videos' do
+#
+#     end
+#   end
+# end
