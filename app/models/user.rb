@@ -1,4 +1,3 @@
-require 'pry'
 class User < ActiveRecord::Base
   has_many :categories
   has_many :creators, through: :categories
@@ -42,22 +41,5 @@ class User < ActiveRecord::Base
     creator = Creator.find_by(uid: result["uri"].gsub(/[^0-9]/, ""), provider: "vimeo")
     return true if self.creators.include?(creator)
   end
-
- # def self.creator?(result)
- #   creator = @current_user.find_by(uid: params["#{result.id}"], provider: params["twitter"])
- #   return true if !creator.nil?
- # end
-
- # def videos
- #  videos = []
- #   self.creators.each do |creator|
- #    if creator.provider == "vimeo"
- #      creator.videos.each do |video|
- #        videos << video
- #      end
- #    end
- #   end
- #   return videos
- # end
 
 end
