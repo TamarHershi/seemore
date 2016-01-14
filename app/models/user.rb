@@ -34,12 +34,13 @@ class User < ActiveRecord::Base
 
 
   def twitter_follow?(result)
-    self.creators.each do |creator|
-      if result.name == creator[:name]
-        # binding.pry
-        return true
-      end
-    end
+    creator = Creator.find_by(uid: result.id, provider: "twitter")
+    return true if self.creators.include?(creator)
+  end
+
+  def vimeo_follow?(result)
+    creator = Creator.find_by(uid: result["uri"].gsub(/[^0-9]/, ""), provider: "vimeo")
+    return true if self.creators.include?(creator)
   end
 
  # def self.creator?(result)
