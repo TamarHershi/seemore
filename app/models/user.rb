@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :uid, :provider
   validates_uniqueness_of :uid
 
-
  def self.find_or_create_from_omniauth(auth_hash)
    user = self.find_by(uid: auth_hash["uid"], provider: auth_hash["provider"])
    if !user.nil?
@@ -29,6 +28,11 @@ class User < ActiveRecord::Base
      end
    end
  end
+
+ # def self.creator?(result)
+ #   creator = @current_user.find_by(uid: params["#{result.id}"], provider: params["twitter"])
+ #   return true if !creator.nil?
+ # end
 
  # def videos
  #  videos = []
