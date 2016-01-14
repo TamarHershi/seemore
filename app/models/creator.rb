@@ -55,7 +55,7 @@ class Creator < ActiveRecord::Base
         return videos["data"]
       end
     elsif !videos["error"].nil?
-      # raise an error here, this means vimeo doesn't like the user
+      raise ArgumentError
     end
   end
 
