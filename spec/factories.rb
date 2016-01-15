@@ -16,6 +16,14 @@ FactoryGirl.define do
     avatar_url "www.image.com"
   end
 
+  factory :some_user, class: User do
+    name "Tammy"
+    uid "15"
+    provider "vimeo"
+    email "some@some.com"
+    avatar_url "www.some.com"
+  end
+
   factory :twitter_creator, class: Creator do
     name "Edward"
     description "HELLO!"

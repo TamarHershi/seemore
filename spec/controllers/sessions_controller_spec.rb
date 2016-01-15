@@ -123,10 +123,12 @@ RSpec.describe SessionsController, type: :controller do
         it "redirects to new session path" do
           delete :destroy
           expect(response).to redirect_to new_session_path
-          # expect(:notice).to include "You've logged out."
         end
-      end
-
-
+        it "the user is not login" do
+          delete :destroy
+          expect(session[:user_id]).to be_nil
+          expect(:notice).not_to be_empty
+        end
+    end
   end
 end
