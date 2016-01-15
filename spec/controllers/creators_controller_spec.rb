@@ -6,6 +6,14 @@ RSpec.describe CreatorsController, type: :controller do
 
   describe "GET index" do
 
+    describe "require_login" do
+      it "requires a user to be logged in" do
+        get :index
+        expect(flash[:error]).to include "Login to begin curating."
+        expect(subject).to redirect_to new_session_path
+      end
+    end
+
     context "user has followed a creator" do
 
       let(:category) { create(:category) }
@@ -67,7 +75,7 @@ RSpec.describe CreatorsController, type: :controller do
 
       it "follows a creator" do
         get :follow, creator_params
-        expect(flash[:notice]).to include "You're now following #{creator.name}."
+        expect(flash[:notice]).to include "You're now following"
         expect(subject).to redirect_to "from_where_I_was"
       end
 
