@@ -1,29 +1,17 @@
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe UsersController, type: :controller do
 
   describe "GET show" do
-    let (:media_user) do
-      user = build(:twitter_user)
-      vimeo_creator = build(:vimeo_creator)
-      twitter_creator = build(:twitter_creator)
-      video = build(:video)
-      tweet = build(:tweet)
-      user.creators << vimeo_creator
-      user.creators << twitter_creator
-      return user
-    end
-    let (:no_media_user) do
-      user = build(:vimeo_user)
+    before :each do
+      @user = create(:twitter_user)
+      session[:user_id] = @user.id
     end
 
     it "is successful" do
-      # get: :show
-      # expect 
-    end
-    it "sets @media" do
-      get :show, id: media_user.id
-      expect(assigns(:media).class).to be_a(Array)
+      get :show, id: @user.id
+      expect(response.status).to eq(200)
     end
   end
 
