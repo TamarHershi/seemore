@@ -16,6 +16,14 @@ FactoryGirl.define do
    avatar_url "www.a.com"
  end
 
+ factory :twitter_user_3, class: User do
+   name "Rob"
+   uid "323523"
+   provider "twitter"
+   email "test2@fasd.com"
+   avatar_url "www.ab.com"
+ end
+
  factory :vimeo_user, class: User do
    name "Nancy"
    uid "1ab3da5"
@@ -29,7 +37,22 @@ FactoryGirl.define do
    description "HELLO!"
    profile_pic "www.profilepic.com"
    provider "twitter"
-   uid "fdsfdsfs"
+   uid "fdsfdsbs"
+ end
+
+ factory :twitter_creator_2, class: Creator do
+   name "Eddie"
+   description "Hola!"
+   profile_pic "www.profilepix.com"
+   provider "twitter"
+   uid "fdsfdas"
+ end
+
+ factory :bad_twitter_creator, class: Creator do
+   name "Eddie"
+   description "Hola!"
+   profile_pic "www.profilepix.com"
+   provider "twitter"
  end
 
  factory :vimeo_creator, class: Creator do
@@ -65,4 +88,8 @@ FactoryGirl.define do
    association :user, factory: :twitter_user
  end
 
+ factory :category_2, class: Category do
+   association :creator, factory: :twitter_creator_2
+   association :user, factory: :twitter_user_3
+ end
 end
