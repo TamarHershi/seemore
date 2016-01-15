@@ -29,28 +29,3 @@ class CreatorsController < ApplicationController
     redirect_to :back
   end
 end
-
-      # if !params["profile_pic"].nil?
-      #   pic = params["profile_pic"]["sizes"][2]["link"]
-      # else
-      #   pic = "twitter_default_image.png"
-      # end
-      #   Creator.transaction do
-      #     @creator = Creator.new(
-      #       uri: params["uri"],
-      #       name: params["name"],
-      #       provider: params["provider"],
-      #       profile_pic: pic,
-      #       uid: params["uid"])
-      #     if @creator.provider == "vimeo"
-      #       @creator.profile_pic = params["profile_pic"]["sizes"][2]["link"]
-      #     else
-      #       @creator.profile_pic = params["profile_pic"]
-      #     end
-      #   @creator.save
-      #   @creator.users << @current_user
-      #   videos_array = @creator.get_videos
-      #   Video.create_videos_for_creator_from_hashes(videos_array, @creator)
-      # end
-      # flash[:notice] = "You're now following #{@creator.name}."
-      # redirect_to :back
