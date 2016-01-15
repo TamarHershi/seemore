@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/follow', to:"creators#follow", as: :follow
   post '/unfollow', to:"creators#unfollow", as: :unfollow
 
-  resources :sessions, except: [:update]
+  resources :sessions, except: [:update, :destroy]
   resources :creators
 
 end

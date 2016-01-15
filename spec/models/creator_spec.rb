@@ -89,13 +89,13 @@ RSpec.describe Creator, type: :model do
 
           it 'assigns and default image if none is provided' do
             pictureless_params = {
-              "name" => " FRED",
+              "name" => "frog",
               "provider" => "vimeo",
-              "uid" => "2221122332"
+              "uid" => "2520140"
             }
             default_pic_creator = Creator.find_or_create(pictureless_params)
             expect(default_pic_creator.profile_pic).to be_truthy
-            expect(default_pic_creator.profile_pic).to eq("vimeo_default_two.png")
+            expect(default_pic_creator.profile_pic).to eq("vimeo_default_image.png")
           end
 
         end

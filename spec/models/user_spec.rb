@@ -107,4 +107,40 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe ".twitter_follow?", :vcr do
+
+    let(:user) { create(:vimeo_user) }
+    let(:twitter_creator_result) { $twitter.user_search("cat").take(1)[0] }
+
+    it "returns false if a user not yet following a creator" do
+      expect(user.twitter_follow?(twitter_creator_result)).to be_falsey
+    end
+    it "returns true if a user is already following a creator" do
+      creator = Creator.create(name: twitter_creator_result.name, provider: "twitter", uid: twitter_creator_result.id)
+      creator.users << user
+      expect(user.twitter_follow?(twitter_creator_result)).to be_truthy
+    end
+  end
+
+  describe ".vimeo_follow?" do
+
+    let(:user) { create(:vimeo_user) }
+    let(:vimeo_creator_result) do
+      {
+        "uri" => "/users/692667",
+        "provider" => "vimeo",
+        "name" => "steve",
+      }
+    end
+
+    it "returns false if a user not yet following a creator" do
+      expect(user.vimeo_follow?(vimeo_creator_result)).to be_falsey
+    end
+    it "returns true if a user is already following a creator" do
+      creator = Creator.create(name: "steve", provider: "vimeo", uid: "692667")
+      creator.users << user
+      expect(user.vimeo_follow?(vimeo_creator_result)).to be_truthy
+    end
+  end
 end
