@@ -53,7 +53,7 @@ group :production do
 end
 
 group :test do
-  gem 'webmock'
+  gem 'webmock', '1.8.0'
 end
 
 group :development, :test do
@@ -64,7 +64,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'pry'
   gem 'factory_girl_rails'
-  gem 'vcr', '2.2.5'
+  gem 'vcr'
 end
 
 group :development do

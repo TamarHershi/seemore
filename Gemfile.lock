@@ -85,7 +85,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    hashdiff (0.2.3)
     hashie (3.4.3)
     http (0.9.8)
       addressable (~> 2.3)
@@ -254,16 +253,15 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
-    vcr (2.2.5)
+    vcr (3.0.1)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-    webmock (1.22.6)
-      addressable (>= 2.3.6)
-      crack (>= 0.3.2)
-      hashdiff
+    webmock (1.8.0)
+      addressable (>= 2.2.7)
+      crack (>= 0.1.7)
 
 PLATFORMS
   ruby
@@ -297,9 +295,9 @@ DEPENDENCIES
   turbolinks
   twitter
   uglifier (>= 1.3.0)
-  vcr (= 2.2.5)
+  vcr
   web-console (~> 2.0)
-  webmock
+  webmock (= 1.8.0)
 
 BUNDLED WITH
    1.11.2
