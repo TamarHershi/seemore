@@ -1,4 +1,3 @@
-require 'pry'
 class User < ActiveRecord::Base
   has_many :categories
   has_many :creators, through: :categories
@@ -32,6 +31,8 @@ class User < ActiveRecord::Base
    end
  end
 
+ # this two methods will run for every creator we search on the search page view
+ # it will choose which button to show - "Follow" or "Unfollow"
 
   def twitter_follow?(result)
     creator = Creator.find_by(uid: result.id, provider: "twitter")

@@ -1,6 +1,5 @@
 require 'rails_helper'
 require 'json'
-require "pry"
 
 RSpec.describe Creator, type: :model do
 
