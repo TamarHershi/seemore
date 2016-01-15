@@ -14,7 +14,7 @@
           <h4 class="creator-name">
             <%= creator.name %>
           </h4>
-          <%= button_to "Unfollow", root_path, class: "btn btn-default follow-btn" %>
+          <%= render 'follow_unfollow_button' %>
         </div>
     <% end %>
     </div>
