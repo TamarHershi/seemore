@@ -10,7 +10,7 @@ FactoryGirl.define do
 
  factory :twitter_user_2, class: User do
    name "Bob"
-   uid "32351a"
+   uid "32ds1af"
    provider "twitter"
    email "test@fasd.com"
    avatar_url "www.a.com"
@@ -46,13 +46,6 @@ FactoryGirl.define do
    profile_pic "www.profilepix.com"
    provider "twitter"
    uid "fdsfdas"
- end
-
- factory :bad_twitter_creator, class: Creator do
-   name "Eddie"
-   description "Hola!"
-   profile_pic "www.profilepix.com"
-   provider "twitter"
  end
 
  factory :vimeo_creator, class: Creator do

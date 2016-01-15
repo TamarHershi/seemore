@@ -4,23 +4,10 @@ require 'pry'
 
 RSpec.describe CreatorsController, type: :controller do
 
-  # before :all do
-  #   session[:user_id] = user.id
-  # end
-
-  context "User is successfully following a Creator" do
-    let(:user) {create(:twitter_user) }
-
-    let(:creator_params) do
-      { name: "Edward",
-        provider: "twitter",
-        bio: "Hello",
-        profile_pic: "asdf",
-        uid: "fdsfdsfs"
-      }
-    end
-
     describe "GET index" do
+
+      context "User is successfully following a Creator" do
+        let(:user) {create(:twitter_user) }
 
       context "user has followed a creator" do
         let(:category) { create(:category) }
@@ -54,6 +41,15 @@ RSpec.describe CreatorsController, type: :controller do
 
     describe "POST follow" do
 
+      let(:creator_params) do
+        { name: "Edward",
+          provider: "twitter",
+          bio: "Hello",
+          profile_pic: "asdf",
+          uid: "fdsfdsfs"
+        }
+      end
+
       before :each do
         session[:user_id] = user.id
         request.env["HTTP_REFERER"] = "from_where_I_was"
@@ -85,40 +81,34 @@ RSpec.describe CreatorsController, type: :controller do
   end
 
   describe "GET #index" do
+
+    before :each do
+      session[:user_id] = user2.id
+    end
+
     context "User failed to follow Creator" do
       let(:user2) {create(:twitter_user_2) }
 
-      let(:creator_params) do
-        { name: "Edward",
-          provider: "twitter",
-          bio: "Hello",
-          profile_pic: "asdf",
-          uid: "fdsfdsfs"
-        }
-      end
-
-      before :each do
-        session[:user_id] = user2.id
-        request.env["HTTP_REFERER"] = "from_where_I_was"
-      end
-
       it "gives a flash notice" do
         get :index
+        expect(response.status).to eq 200
         expect(flash[:notice]).to include "Try following some people first!"
       end
     end
   end
-  #
 
   describe "POST #follow" do
-    before :each do
-      session[:user_id] = user2.id
-    end
-    context "creator is already followed" do
 
-      let(:category_2) { create(:category_2) }
-      let(:user_2) { category.user }
-      let(:creator_2) { category.creator }
+    let(:category_2) { create(:category_2) }
+    let(:user_2) { category_2.user }
+    let(:creator_2) { category_2.creator }
+
+    before :each do
+      session[:user_id] = user_2.id
+      request.env["HTTP_REFERER"] = "from_where_I_was"
+    end
+
+    context "creator is already followed" do
 
       let(:creator_params) do
         { name: "Eddie",
@@ -131,7 +121,7 @@ RSpec.describe CreatorsController, type: :controller do
 
       it "gives an error" do
         get :follow, creator_params
-        expect(flash[:notice]).to include "You're already following #{creator.name}"
+        expect(flash[:notice]).to include "You're already following #{creator_2.name}"
         expect(subject).to redirect_to "from_where_I_was"
       end
     end
