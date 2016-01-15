@@ -1,19 +1,22 @@
 require 'rails_helper'
 require 'spec_helper'
+require 'pry'
 
 RSpec.describe CreatorsController, type: :controller do
 
-    let(:category) { create(:category) }
-    let(:user) { category.user }
-    let(:creator) { category.creator }
+  describe "GET index" do
 
-    before :each do
-      session[:user_id] = user.id
-    end
+    context "user has followed a creator" do
 
-    describe "GET index" do
+      let(:category) { create(:category) }
+      let(:user) { category.user }
+      let(:creator) { category.creator }
 
-    context "is successful" do
+      before :each do
+        session[:user_id] = user.id
+        request.env["HTTP_REFERER"] = "from_where_I_was"
+      end
+
       it "renders creator index page" do
         get :index
         expect(response).to render_template :index
@@ -30,31 +33,98 @@ RSpec.describe CreatorsController, type: :controller do
         expect(assigns(:creators)[0]).to be_an_instance_of(Creator)
       end
     end
+
+      context "user has not followed anyone" do
+        let (:user) {create(:twitter_user)}
+
+        # it "displays a flash.now message" do
+        #   get :index
+        #   expect (flash.instance_variable_get(:@now)).not_to be_empty
+        # end
+
+      end
   end
 
-  describe "POST create" do
+  describe "POST #follow" do
 
-    it "returns an instance of Creator if one already exists for a certain provider user" do
+    context "it finds an existing creator" do
+
+      let(:creator_params) do
+        { name: "Edward",
+          provider: "twitter",
+          bio: "Hello",
+          profile_pic: "asdf",
+          uid: "fdsfdsfs"
+        }
+      end
+
+      let(:user) {create(:twitter_user) }
+
+      before :each do
+        session[:user_id] = user.id
+        request.env["HTTP_REFERER"] = "from_where_I_was"
+      end
+
+      it "follows a creator" do
+        get :follow, creator_params
+        expect(flash[:notice]).to include "You're now following #{creator.name}."
+        expect(subject).to redirect_to "from_where_I_was"
+      end
 
     end
-    it "creates a new instance of Creator to follow if one doesn't exist" do
 
-    end
-    it "saves all the media for a new Creator" do
+    context "creator is already followed" do
 
-    end
-    it "does not create duplicate instances Creator with same proivder & uid" do
+      let(:category_2) { create(:category_2) }
+      let(:user_2) { category_2.user }
+      let(:creator_2) { category_2.creator }
 
-    end
-    it "does not allow you to follow a Creator you're already following" do
+      let(:creator_params) do
+        { name: "Eddie",
+          description: "Hola!",
+          profile_pic: "www.profilepix.com",
+          provider: "twitter",
+          uid: "fdsfdas"
+        }
+      end
 
-    end
-    it "does not save new instance of Creator unless media is saved as well" do
+      before :each do
+        session[:user_id] = user_2.id
+        request.env["HTTP_REFERER"] = "from_where_I_was"
+      end
 
-    end
-    it "sets up the Categories relationship between @current_user and @creator" do
-
+      it "gives an error" do
+        get :follow, creator_params
+        expect(flash[:notice]).to include "You're already following #{creator_2.name}"
+        expect(subject).to redirect_to "from_where_I_was"
+      end
     end
   end
 
+  describe "POST #unfollow" do
+
+    let(:unfollow_category) { create(:unfollow_category) }
+    let(:twitter_user) { unfollow_category.user }
+    let(:twitter_creator_to_unfollow) { unfollow_category.creator }
+
+    let(:twitter_creator_to_unfollow_params) do
+      { name: "Nancy",
+        description: "Hi!",
+        profile_pic: "www.profilepix.com",
+        provider: "twitter",
+        uid: "112233"
+      }
+    end
+
+    before :each do
+      session[:user_id] = twitter_user.id
+      request.env["HTTP_REFERER"] = "from_where_I_was"
+    end
+
+ # this test could use an actual method to test whether or not relationship got destroyed
+    it "deletes the relationship between the user and creator" do
+      get :unfollow, twitter_creator_to_unfollow_params
+      expect(subject).to redirect_to "from_where_I_was"
+    end
+  end
 end
