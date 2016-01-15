@@ -24,6 +24,22 @@ FactoryGirl.define do
    avatar_url "www.ab.com"
  end
 
+ factory :twitter_user_not_following, class: User do
+   name "Roy"
+   uid "323443"
+   provider "twitter"
+   email "test@fasd.com"
+   avatar_url "www.fake.com"
+ end
+
+ factory :twitter_user_unfollowing, class: User do
+   name "Grob"
+   uid "323578"
+   provider "twitter"
+   email "test2@test.com"
+   avatar_url "www.fake.com"
+ end
+
  factory :vimeo_user, class: User do
    name "Nancy"
    uid "1ab3da5"
@@ -46,6 +62,14 @@ FactoryGirl.define do
    profile_pic "www.profilepix.com"
    provider "twitter"
    uid "fdsfdas"
+ end
+
+ factory :twitter_creator_to_unfollow, class: Creator do
+   name "Nancy"
+   description "Hi!"
+   profile_pic "www.profilepix.com"
+   provider "twitter"
+   uid "112233"
  end
 
  factory :vimeo_creator, class: Creator do
@@ -84,5 +108,10 @@ FactoryGirl.define do
  factory :category_2, class: Category do
    association :creator, factory: :twitter_creator_2
    association :user, factory: :twitter_user_3
+ end
+
+ factory :unfollow_category, class: Category do
+   association :creator, factory: :twitter_creator_to_unfollow
+   association :user, factory: :twitter_user_unfollowing
  end
 end

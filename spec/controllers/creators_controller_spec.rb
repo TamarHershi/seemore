@@ -65,29 +65,17 @@ RSpec.describe CreatorsController, type: :controller do
           expect(subject).to redirect_to "from_where_I_was"
         end
       end
-
-      # it "does not create duplicate instances of Creator with same provider & uid" do
-      # expect {get :follow, provider: :vimeo}.to change(Creator, :count).by(0)
-      # end
-
-
-        # it "does not save new instance of Creator unless media is saved as well" do
-        #
-        # end
-        # it "sets up the Categories relationship between @current_user and @creator" do
-        #
-        # end
     end
   end
 
   describe "GET #index" do
 
     before :each do
-      session[:user_id] = user2.id
+      session[:user_id] = user.id
     end
 
     context "User failed to follow Creator" do
-      let(:user2) {create(:twitter_user_2) }
+      let(:user) {create(:twitter_user_not_following) }
 
       it "gives a flash notice" do
         get :index
@@ -126,4 +114,32 @@ RSpec.describe CreatorsController, type: :controller do
       end
     end
   end
+
+  describe "POST #unfollow" do
+
+    let(:unfollow_category) { create(:unfollow_category) }
+    let(:twitter_user) { unfollow_category.user }
+    let(:twitter_creator_to_unfollow) { unfollow_category.creator }
+
+    let(:twitter_creator_to_unfollow_params) do
+      { name: "Nancy",
+        description: "Hi!",
+        profile_pic: "www.profilepix.com",
+        provider: "twitter",
+        uid: "112233"
+      }
+    end
+
+    before :each do
+      session[:user_id] = twitter_user.id
+      request.env["HTTP_REFERER"] = "from_where_I_was"
+    end
+
+ # this test could use an actual method to test whether or not relationship got destroyed
+    it "deletes the relationship between the user and creator" do
+      get :unfollow, twitter_creator_to_unfollow_params
+      expect(subject).to redirect_to "from_where_I_was"
+    end
+  end
+
 end
