@@ -4,7 +4,7 @@ class Creator < ActiveRecord::Base
   has_many :videos
   has_many :tweets
   validates_presence_of :name, :uid, :provider
-  validates :creator_uid_and_provider_must_be_unique_together
+  validate :uid_and_provider_must_be_unique_together
 
   def self.find_or_create(params)
     creator = self.find_by(uid: params["uid"], provider: params["provider"])
@@ -63,12 +63,11 @@ class Creator < ActiveRecord::Base
     $twitter.user_timeline(self.name).take(25)
   end
 
-  private
-
-  def creator_uid_and_provider_must_be_unique_together
-    other_creator = Creator.find_by(:uid, creator.uid)
-    if other_creator && other_creator.provider == creator.provider
+  def uid_and_provider_must_be_unique_together
+    other_creator = Creator.find_by(:uid, uid)
+    if other_creator && other_creator.provider == provider
       errors.add(:uid_and_provider_must_be_unique_together, "this uid and provider combination already exists")
+    end
   end
 
 end

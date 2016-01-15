@@ -5,6 +5,24 @@ RSpec.describe Creator, type: :model do
 
   let!(:creator1) {FactoryGirl.create(:twitter_creator)}
   let!(:user1) { FactoryGirl.create(:twitter_user)}
+  let(:twitter_user_params) do
+    {
+      name: "George",
+      uid: "1ab3da5",
+      provider: "twitter",
+      email: "test@test.com",
+      avatar_url: "www.image.com"
+    }
+  end
+  let(:vimeo_user_params) do
+    {
+      name: "George",
+      uid: "1ab3da5",
+      provider: "vimeo",
+      email: "test@test.com",
+      avatar_url: "www.image.com"
+    }
+  end
 
   let(:log_in) {
   current_user = create :user
@@ -13,13 +31,14 @@ RSpec.describe Creator, type: :model do
 
     describe ".validations" do
       it "name must be present" do
-        expect(Creator.new(name: nil, uid:"12233344")).to_not be_valid
+        expect(Creator.new(twitter_user_params)).to_not be_valid
+        expect(Creator.new(vimeo_user_params)).to be_valid
       end
       it "uid must be present" do
         expect(Creator.new(name: "cat", uid: nil)).to_not be_valid
       end
 
-      it "must have a unique uid" do
+      it "must have a unique uid and provider combination" do
         expect(Creator.new(name: "cat", uid: creator1.name )).to_not be_valid
       end
     end
