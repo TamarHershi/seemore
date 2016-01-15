@@ -8,19 +8,24 @@ class SearchesController < ApplicationController
       flash.now[:notice] = "Please select whether you want to search Twitter or Vimeo."
       render :search
     else
-      search_term = params[:search]
-      @provider = params[:provider]
-      if @provider == "vimeo"
-        results = vimeo_search_api_call(search_term)
-         if results["total"] == 0
-           flash.now[:error] = "No results matched your search."
-         else
-           @results = results["data"]
-         end
-      elsif @provider == "twitter"
-        @results = twitter_search_api_call(search_term)
-        if @results.length == 0
-          flash.now[:error] = "No results matched your search."
+      if params[:search].nil?
+        flash.now[:notice] = "Please select a search term, yo!"
+        render :search
+      else
+        search_term = params[:search]
+        @provider = params[:provider]
+        if @provider == "vimeo"
+          results = vimeo_search_api_call(search_term)
+           if results["total"] == 0
+             flash.now[:error] = "No results matched your search."
+           else
+             @results = results["data"]
+           end
+        elsif @provider == "twitter"
+          @results = twitter_search_api_call(search_term)
+          if @results.length == 0
+            flash.now[:error] = "No results matched your search."
+          end
         end
       end
     end

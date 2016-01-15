@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
+ ruby '2.2.3' 
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -52,7 +53,7 @@ group :production do
 end
 
 group :test do
-  gem 'webmock'
+  gem 'webmock', '1.8.0'
 end
 
 group :development, :test do
@@ -63,11 +64,12 @@ group :development, :test do
   gem 'simplecov'
   gem 'pry'
   gem 'factory_girl_rails'
-  gem 'vcr', '2.2.5'
+  gem 'vcr'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'sqlite3'
   gem 'web-console', '~> 2.0'
   gem "better_errors"
   gem "binding_of_caller"
