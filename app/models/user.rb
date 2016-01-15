@@ -43,21 +43,4 @@ class User < ActiveRecord::Base
     return true if self.creators.include?(creator)
   end
 
- # def self.creator?(result)
- #   creator = @current_user.find_by(uid: params["#{result.id}"], provider: params["twitter"])
- #   return true if !creator.nil?
- # end
-
- # def videos
- #  videos = []
- #   self.creators.each do |creator|
- #    if creator.provider == "vimeo"
- #      creator.videos.each do |video|
- #        videos << video
- #      end
- #    end
- #   end
- #   return videos
- # end
-
 end

@@ -96,7 +96,7 @@ RSpec.describe Creator, type: :model do
             }
             default_pic_creator = Creator.find_or_create(pictureless_params)
             expect(default_pic_creator.profile_pic).to be_truthy
-            expect(default_pic_creator.profile_pic).to eq("vimeo_default_image.png")
+            expect(default_pic_creator.profile_pic).to eq("vimeo_default_two.png")
           end
 
         end
