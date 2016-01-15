@@ -1,9 +1,7 @@
 <% if !@creators.nil? %>
 <div class="row">
   <div class="jumbotron">
-    <h1>
-      Creators You Follow
-    </h1>
+    <h1>Creators You Follow</h1>
   </div>
 </div>
   <% @creators.in_groups_of(3, false) do |group| %>
@@ -21,7 +19,7 @@
                                   action: "unfollow",
                                   name: creator.name,
                                   provider: creator.provider,
-                                  uid: creator.id},
+                                  uid: creator.uid},
                                   class: "btn btn-default" %>
           <% elsif creator.provider == "vimeo" %>
             <%= button_to "Unfollow", {controller: "creators",
