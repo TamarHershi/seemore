@@ -132,7 +132,7 @@ RSpec.describe SessionsController, type: :controller do
           delete :destroy
           expect(response).to redirect_to new_session_path
         end
-        fit "the user is not login" do
+        it "the user is not login" do
           delete :destroy
           expect(session[:user_id]).to be_nil
           # expect(:notice).to eq("You've logged out. See you next time.")
