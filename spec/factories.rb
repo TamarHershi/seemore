@@ -81,6 +81,14 @@ FactoryGirl.define do
    uid "fdsfdas"
  end
 
+ factory :new_twitter_creator, class: Creator do
+   name "Tammy"
+   description "Hola!"
+   profile_pic "www.profilepix.com"
+   provider "twitter"
+   uid "123345"
+ end
+
  factory :twitter_creator_to_unfollow, class: Creator do
    name "Nancy"
    description "Hi!"

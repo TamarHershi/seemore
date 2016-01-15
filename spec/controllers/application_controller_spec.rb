@@ -9,7 +9,7 @@ RSpec.describe ApplicationController, type: :controller do
   #     session[:user_id] = user.id
   #   end
   #   it "sets @current_user to logged in user" do
-      
+  #
   #     expect(assigns(:current_user).id).to eq(session[:user_id])
   #   end
   # end
