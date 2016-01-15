@@ -107,4 +107,18 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe ".twitter_follow?", :vcr do
+
+    let(:user) { create(:vimeo_user) }
+    let(:twitter_creator) { $twitter.user_search("cat").take(1)[0] }
+
+
+    fit "returns false if a user not yet following a creator" do
+      expect(user.twitter_follow?(twitter_creator)).to be_falsey
+    end
+    it "returns false if a user is already following a creator" do
+
+    end
+  end
 end
