@@ -104,7 +104,7 @@ RSpec.describe CreatorsController, type: :controller do
   describe "POST #unfollow" do
 
     let(:unfollow_category) { create(:unfollow_category) }
-    let(:twitter_user) { unfollow_category.user }
+    let(:twitter_user_unfollowing) { unfollow_category.user }
     let(:twitter_creator_to_unfollow) { unfollow_category.creator }
 
     let(:twitter_creator_to_unfollow_params) do
@@ -117,13 +117,13 @@ RSpec.describe CreatorsController, type: :controller do
     end
 
     before :each do
-      session[:user_id] = twitter_user.id
+      session[:user_id] = twitter_user_unfollowing.id
       request.env["HTTP_REFERER"] = "from_where_I_was"
     end
 
- # this test could use an actual method to test whether or not relationship got destroyed
     it "deletes the relationship between the user and creator" do
       get :unfollow, twitter_creator_to_unfollow_params
+      expect(twitter_user_unfollowing.creators).not_to include(twitter_creator_to_unfollow_params)
       expect(subject).to redirect_to "from_where_I_was"
     end
   end
