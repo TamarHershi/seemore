@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :videos, through: :creators
   validates_presence_of :name, :uid, :provider
   validates_uniqueness_of :uid
+  validates :user_uid_and_provider_must_be_unique_together
 
  def self.find_or_create_from_omniauth(auth_hash)
    user = self.find_by(uid: auth_hash["uid"], provider: auth_hash["provider"])

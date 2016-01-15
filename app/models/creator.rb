@@ -1,10 +1,10 @@
 class Creator < ActiveRecord::Base
-  validates_presence_of :name, :uid, :provider
-  validates_uniqueness_of :uid
   has_many :categories
   has_many :users, through: :categories
   has_many :videos
   has_many :tweets
+  validates_presence_of :name, :uid, :provider
+  validates :creator_uid_and_provider_must_be_unique_together
 
   def self.find_or_create(params)
     creator = self.find_by(uid: params["uid"], provider: params["provider"])
@@ -59,9 +59,14 @@ class Creator < ActiveRecord::Base
     end
   end
 
-
   def get_tweets
     $twitter.user_timeline(self.name).take(25)
+  end
+
+  private
+
+  def creator_uid_and_provider_must_be_unique_together
+    
   end
 
 end
