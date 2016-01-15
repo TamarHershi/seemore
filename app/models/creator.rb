@@ -66,7 +66,9 @@ class Creator < ActiveRecord::Base
   private
 
   def creator_uid_and_provider_must_be_unique_together
-    
+    other_creator = Creator.find_by(:uid, creator.uid)
+    if other_creator && other_creator.provider == creator.provider
+      errors.add(:uid_and_provider_must_be_unique_together, "this uid and provider combination already exists")
   end
 
 end

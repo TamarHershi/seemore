@@ -141,15 +141,3 @@ RSpec.describe Creator, type: :model do
 
     end
 end
-
-  # describe 'get videos info' do
-  # end
-
-
-#   describe 'create videos' do
-#     before(:each) do
-#       VCR.use_cassette 'get_videos' do
-#
-#     end
-#   end
-# end
