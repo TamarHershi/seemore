@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe SessionsController, type: :controller do
 
@@ -108,6 +109,7 @@ RSpec.describe SessionsController, type: :controller do
       end
       context "it fails on vimeo" do
         before { request.env["omniauth.auth"] = "bad login"}
+        let(:user) { FactoryGirl.create(:some_user) }
         it "redirect to root path" do
           get :create, provider: :vimeo
           expect(response).to redirect_to root_path
@@ -120,6 +122,12 @@ RSpec.describe SessionsController, type: :controller do
     end
 
     describe "DELETE #destroy" do
+      before { request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:vimeo]}
+      let!(:user) {User.find_or_create_from_omniauth(OmniAuth.config.mock_auth[:vimeo])}
+      before :each do
+        session[:user_id] = user.id
+      end
+
         it "redirects to new session path" do
           delete :destroy
           expect(response).to redirect_to new_session_path
@@ -127,7 +135,8 @@ RSpec.describe SessionsController, type: :controller do
         it "the user is not login" do
           delete :destroy
           expect(session[:user_id]).to be_nil
-          expect(:notice).not_to be_empty
+          # expect(:notice).to eq("You've logged out. See you next time.")
+
         end
     end
   end
