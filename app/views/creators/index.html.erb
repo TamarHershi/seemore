@@ -14,7 +14,20 @@
           <h4 class="creator-name">
             <%= creator.name %>
           </h4>
-          <%= button_to "Unfollow", root_path, class: "btn btn-default follow-btn" %>
+          <% if creator.provider == "twitter" %> 
+            <%= button_to "Unfollow", {controller: "creators",
+                                  action: "unfollow",
+                                  name: creator.name,
+                                  provider: creator.provider,
+                                  uid: creator.id},
+                                  class: "btn btn-default" %>
+          <% elsif creator.provider == "vimeo" %>
+            <%= button_to "Unfollow", {controller: "creators",
+                                     action: "unfollow",
+                                     uid: creator.uid,
+                                     provider: creator.provider},
+                                     class: "btn btn-default" %>
+          <% end %>
         </div>
     <% end %>
     </div>
