@@ -1,9 +1,11 @@
 <div class="row">
+  <% if !@provider.nil? %>
   <div class="jumbotron">
-  <h1>
-    <%= @provider.capitalize %> Search Results
-  </h1>
+    <h1>
+      <%= @provider.capitalize %> Search Results
+    </h1>
   </div>
+  <% end %>
 </div>
 <% if !@results.nil? %>
   <% @results.in_groups_of(3, false) do |group| %>
@@ -21,7 +23,7 @@
             <%= result.name if @provider == "twitter" %>
             <%= result["name"] if @provider == "vimeo" %>
           </h4>
-           <% if @provider == "twitter" %> 
+           <% if @provider == "twitter" %>
              <% if !(@current_user.twitter_follow?(result)) %>
                <%= button_to "Follow", {controller: "creators",
                                         action: "follow",
