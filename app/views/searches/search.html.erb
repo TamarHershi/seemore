@@ -19,7 +19,44 @@
             <%= result.name if @provider == "twitter" %>
             <%= result["name"] if @provider == "vimeo" %>
           </h4>
-            <%= render 'follow_unfollow_button' %>
+           <% if @provider == "twitter" %> 
+             <% if !(@current_user.twitter_follow?(result)) %>
+               <%= button_to "Follow", {controller: "creators",
+                                        action: "follow",
+                                        name: result.screen_name,
+                                        provider: @provider,
+                                        bio: result.description,
+                                        profile_pic: result.profile_image_uri,
+                                        uid: result.id},
+                                        class: "btn btn-default" %>
+             <% else %>
+                 <%= button_to "Unfollow", {controller: "creators",
+                                       action: "unfollow",
+                                       name: result.screen_name,
+                                       provider: @provider,
+                                       uid: result.id},
+                                       class: "btn btn-default" %>
+
+             <% end %>
+           <% elsif @provider == "vimeo" %>
+             <% if !(@current_user.vimeo_follow?(result)) %>
+               <%= button_to "Follow", {controller: "creators",
+                                        action: "follow",
+                                        uid: result["uri"].gsub(/[^0-9]/, ""),
+                                        name: result["name"],
+                                        profile_pic: result["pictures"],
+                                        bio: result["bio"],
+                                        provider: @provider},
+                                        class: "btn btn-default" %>
+
+             <% else %>
+               <%= button_to "Unfollow", {controller: "creators",
+                                        action: "unfollow",
+                                        uid: result["uri"].gsub(/[^0-9]/, ""),
+                                        provider: @provider},
+                                        class: "btn btn-default" %>
+             <% end %>
+           <% end %>
          </div>
     <% end %>
     </div>
